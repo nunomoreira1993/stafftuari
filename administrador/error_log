@@ -1,0 +1,155 @@
+[10-Aug-2022 21:10:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:10:02 UTC] PHP Warning:  include_once(/lib/config.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:10:02 UTC] PHP Warning:  include_once(): Failed opening '/lib/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:10:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:10:02 UTC] PHP Warning:  require_once(/administrador/pagamentos/pagamentos.obj.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:10:02 UTC] PHP Fatal error:  require_once(): Failed opening required '/administrador/pagamentos/pagamentos.obj.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:12:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:12:02 UTC] PHP Warning:  include_once(/lib/config.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:12:02 UTC] PHP Warning:  include_once(): Failed opening '/lib/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:12:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:12:02 UTC] PHP Warning:  require_once(/administrador/pagamentos/pagamentos.obj.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:12:02 UTC] PHP Fatal error:  require_once(): Failed opening required '/administrador/pagamentos/pagamentos.obj.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:12:43 UTC] PHP Warning:  include_once(/lib/config.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_convites.php on line 2
+[10-Aug-2022 21:12:43 UTC] PHP Warning:  include_once(): Failed opening '/lib/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_convites.php on line 2
+[10-Aug-2022 21:12:43 UTC] PHP Warning:  require_once(/administrador/pagamentos/pagamentos.obj.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_convites.php on line 3
+[10-Aug-2022 21:12:43 UTC] PHP Fatal error:  require_once(): Failed opening required '/administrador/pagamentos/pagamentos.obj.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_convites.php on line 3
+[10-Aug-2022 21:13:34 UTC] PHP Warning:  include_once(/lib/config.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_convites.php on line 2
+[10-Aug-2022 21:13:34 UTC] PHP Warning:  include_once(): Failed opening '/lib/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_convites.php on line 2
+[10-Aug-2022 21:13:34 UTC] PHP Warning:  require_once(/administrador/pagamentos/pagamentos.obj.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_convites.php on line 3
+[10-Aug-2022 21:13:34 UTC] PHP Fatal error:  require_once(): Failed opening required '/administrador/pagamentos/pagamentos.obj.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_convites.php on line 3
+[10-Aug-2022 21:14:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:14:02 UTC] PHP Warning:  include_once(/lib/config.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:14:02 UTC] PHP Warning:  include_once(): Failed opening '/lib/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:14:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:14:02 UTC] PHP Warning:  require_once(/administrador/pagamentos/pagamentos.obj.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:14:02 UTC] PHP Fatal error:  require_once(): Failed opening required '/administrador/pagamentos/pagamentos.obj.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:14:02 UTC] PHP Warning:  include_once(/lib/config.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_convites.php on line 2
+[10-Aug-2022 21:14:02 UTC] PHP Warning:  include_once(): Failed opening '/lib/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_convites.php on line 2
+[10-Aug-2022 21:14:02 UTC] PHP Warning:  require_once(/administrador/pagamentos/pagamentos.obj.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_convites.php on line 3
+[10-Aug-2022 21:14:02 UTC] PHP Fatal error:  require_once(): Failed opening required '/administrador/pagamentos/pagamentos.obj.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_convites.php on line 3
+[10-Aug-2022 21:16:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:16:02 UTC] PHP Warning:  include_once(/lib/config.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:16:02 UTC] PHP Warning:  include_once(): Failed opening '/lib/config.php' for inclusion (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 2
+[10-Aug-2022 21:16:02 UTC] PHP Notice:  Undefined index: DOCUMENT_ROOT in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:16:02 UTC] PHP Warning:  require_once(/administrador/pagamentos/pagamentos.obj.php): failed to open stream: No such file or directory in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[10-Aug-2022 21:16:02 UTC] PHP Fatal error:  require_once(): Failed opening required '/administrador/pagamentos/pagamentos.obj.php' (include_path='.:/opt/alt/php74/usr/share/pear') in /home/staffpe1/public_html/administrador/cron_receber.php on line 3
+[02-Jun-2024 10:44:42 Europe/Lisbon] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function privados::devolveVendaPrivados(), 1 passed in /home/stafftua/public_html/administrador/privados/venda_privados.php on line 12 and exactly 2 expected in /home/stafftua/public_html/administrador/privados/privados.obj.php:256
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/venda_privados.php(12): privados->devolveVendaPrivados('318')
+#1 /home/stafftua/public_html/administrador/paginas.php(120): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 256
+[02-Jun-2024 10:44:52 Europe/Lisbon] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function privados::devolveVendaPrivados(), 1 passed in /home/stafftua/public_html/administrador/privados/venda_privados.php on line 12 and exactly 2 expected in /home/stafftua/public_html/administrador/privados/privados.obj.php:256
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/venda_privados.php(12): privados->devolveVendaPrivados('318')
+#1 /home/stafftua/public_html/administrador/paginas.php(120): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 256
+[02-Jun-2024 17:05:41 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:05:52 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:05:59 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:06:10 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:06:34 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:07:00 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:07:03 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:07:19 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('70', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:07:21 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('65', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:07:59 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('67', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:15:06 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('61', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:16:09 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('61', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:16:35 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('61', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:17:56 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('61', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
+[02-Jun-2024 17:19:13 Europe/Lisbon] PHP Fatal error:  Uncaught TypeError: Argument 3 passed to privados::verificaMesaVendida() must be of the type int, null given, called in /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php on line 31 and defined in /home/stafftua/public_html/administrador/privados/privados.obj.php:18
+Stack trace:
+#0 /home/stafftua/public_html/administrador/privados/inserir_venda_privados.php(31): privados->verificaMesaVendida('77', '2024-06-02', NULL)
+#1 /home/stafftua/public_html/administrador/paginas.php(148): include('/home/stafftua/...')
+#2 /home/stafftua/public_html/administrador/index.php(257): include('/home/stafftua/...')
+#3 {main}
+  thrown in /home/stafftua/public_html/administrador/privados/privados.obj.php on line 18
