@@ -127,6 +127,7 @@ if ($_GET['cancelar']) {
                                     }
 
                                     $disponivel = $dbprivados->verificaMesaDisponivel($mesa['id'], $data_evento, 1);
+                                    $vendida = $dbprivados->verificaMesaVendida($mesa['id'], $data_evento, 1);
 
                                     ?>
                                     <div class="mesa">
@@ -135,7 +136,14 @@ if ($_GET['cancelar']) {
                                                 <?php echo $mesa['codigo_mesa']; ?>
                                             </span>
                                             <?php
-                                            if (!$disponivel) {
+                                            if($vendida) {
+                                            ?>
+                                                <span class="estado vendida">
+                                                    Vendida
+                                                </span>
+                                                <?php
+                                            }
+                                            else if (!$disponivel) {
                                             ?>
                                                 <span class="estado ocupado">
                                                     Ocupada

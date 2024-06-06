@@ -21,7 +21,6 @@ $vendas = $dbprivados->listaVendaPrivados(true, $data_evento);
                     <th>Área</th>
                     <th>Mesa</th>
                     <th>Nome do cliente</th>
-                    <th>Telemovel do cliente</th>
                     <th>Gerente</th>
                     <th>Staff</th>
                     <th>Processado por</th>
@@ -46,14 +45,13 @@ $vendas = $dbprivados->listaVendaPrivados(true, $data_evento);
                 <?php
                 }
                 foreach ($vendas as $venda) {
-                    $arrVendas[$venda["mesa"]][$venda['telemovel_cliente']] += 1;
+                    $arrVendas[$venda["mesa"]][$venda['id_reserva']] += 1;
                     ?>
-                    <tr <?php if( $arrVendas[$venda["mesa"]][$venda['telemovel_cliente']] > 1){ ?> class="second" <?php } ?>>
+                    <tr <?php if( $arrVendas[$venda["mesa"]][$venda['id_reserva']] > 1){ ?> class="second" <?php } ?>>
                         <td><?php echo $venda['id']; ?></td>
                         <td><?php echo $venda['sala']; ?></td>
                         <td><?php echo $venda['mesa']; ?></td>
                         <td><?php echo $venda['nome_cliente']; ?></td>
-                        <td><?php echo $venda['telemovel_cliente']; ?></td>
                         <td><?php echo $venda['nome_gerente']; ?></td>
                         <td><?php echo $venda['nome_rp']; ?></td>
                         <td><?php echo $venda['nome_processado']; ?></td>

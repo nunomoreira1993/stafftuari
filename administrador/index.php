@@ -144,15 +144,7 @@ $tipo = $adm['tipo'];
                         </a>
                         <ul aria-expanded="false" class="collapse in">
                             <li>
-
                                 <?php
-                                if ($tipo != 8) {
-                                ?>
-                                <a href="?pg=entrada_privados" <?php if ($_GET['pg'] == "entrada_privados" || ($tipo == 7 && empty($_GET['pg']))) { ?> class="active" <?php } ?>>
-                                    Entrada de privados
-                                </a>
-                                <?php
-                                }
                                 if ($tipo == 1) {
                                 ?>
                                     <a href="?pg=gestao_salas" <?php if ($_GET['pg'] == "gestao_salas" || $_GET['pg'] == "inserir_sala" || $_GET['pg'] == "gestao_mesas") { ?> class="active" <?php } ?>>

@@ -917,7 +917,7 @@ body {
   background: #c20000;
 }
 .content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot .mesa.vendida {
-  background: #c26d00;
+  background: #f3b501;
 }
 .content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot .mesa.ocupado {
   background: #c20000;
@@ -1438,7 +1438,7 @@ body {
   background: #c20000;
 }
 .content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .mesas .mesa .estado.vendida {
-  background: #c26d00;
+  background: #f3b501;
 }
 .content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .mesas .mesa .estado.ocupado {
   background: #c20000;

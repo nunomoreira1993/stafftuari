@@ -284,7 +284,7 @@ class privados
 
     function devolveReservaDataEvento($id_mesa, $data_evento)
     {
-        $query = "SELECT *, cartoes as numero_cartoes, nome as nome_cliente, telemovel as telemovel_cliente FROM privados_salas_mesas_disponibilidade WHERE id_mesa = $id_mesa AND data_evento = '" . $data_evento . "' AND saiu = 0  ORDER BY id ASC";
+        $query = "SELECT *, cartoes as numero_cartoes, nome as nome_cliente FROM privados_salas_mesas_disponibilidade WHERE id_mesa = $id_mesa AND data_evento = '" . $data_evento . "' AND saiu = 0  ORDER BY id ASC";
 
         $res = $this->db->query($query);
 

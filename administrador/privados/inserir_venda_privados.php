@@ -53,7 +53,6 @@ if ($_POST) {
     $campos['id_reserva'] = $_POST['id_reserva'];
     $campos['id_mesa'] = $_POST['id_mesa'];
     $campos['nome_cliente'] = $_POST['nome_cliente'];
-    $campos['telemovel_cliente'] = $_POST['telemovel_cliente'];
     $campos['id_processado'] = $_SESSION['id_processado'];
     $campos['id_rp'] = $_POST['id_rp'];
     $campos['id_gerente'] = $_POST['id_gerente'];
@@ -84,9 +83,6 @@ if ($_POST) {
 
     if (empty($campos['nome_cliente']) && empty($_SESSION['erro'])) {
         $_SESSION['erro'] = "Preêncha o campo nome do cliente.";
-    }
-    if (empty($campos['telemovel_cliente']) && empty($_SESSION['erro'])) {
-        $_SESSION['erro'] = "Preêncha o campo telemovel do cliente.";
     }
     if (empty($campos['id_rp']) && empty($_SESSION['erro'])) {
         $_SESSION['erro'] = "Selecione um elemento do Staff.";
@@ -204,14 +200,6 @@ if ($campos) {
             </label>
             <div class="input">
                 <input type="text" value="<?php echo $venda['nome_cliente']; ?>" name="nome_cliente" id="input-nome-garrafa" placeholder="Nome do cliente" autocomplete="new-password" <?php if ($hidden == 0) { ?> class="teclado_virtual" <?php } else { ?> readonly="readonly" <?php } ?> />
-            </div>
-        </div>
-        <div class="input-grupo">
-            <label for="input-nome">
-                Telemovel do Cliente
-            </label>
-            <div class="input">
-                <input type="number" min="0" value="<?php echo str_replace("+", "",$venda['telemovel_cliente']); ?>" name="telemovel_cliente" class="teclado_numerico" id="input-telemovel_cliente" placeholder="Telemovel do Cliente" data-decimal="0" autocomplete="new-password" />
             </div>
         </div>
         <div class="input-grupo">

@@ -119,7 +119,6 @@ if ($_GET['cancelar']) {
                                 <img src="/fotos/privados/<?php echo $sala['foto']; ?>">
                                 <?php
                                 foreach ($mesas as $mesa) {
-                                  
                                         $disponivel = $dbprivados->verificaMesaDisponivel($mesa['id'], $data_evento, 1);
                                         $vendida = $dbprivados->verificaMesaVendida($mesa['id'], $data_evento, 1);
                                 ?>
@@ -136,7 +135,8 @@ if ($_GET['cancelar']) {
                         <div class="mesas">
                             <?php
                             foreach ($mesas as $mesa) {
-                                $disponivel = $dbprivados->verificaMesaDisponivel($mesa['id'], $data_evento);
+                                $disponivel = $dbprivados->verificaMesaDisponivel($mesa['id'], $data_evento, 1);
+                                $vendida = $dbprivados->verificaMesaVendida($mesa['id'], $data_evento, 1);
                             ?>
                                 <div class="mesa">
                                     <a class="topo" <?php if ($permissao) { ?> href="/rp/index.php?pg=inserir_reserva&id_mesa=<?php echo $mesa['id']; ?>&id=0&data_evento=<?php echo $data_evento; ?>" <?php } ?>>
@@ -145,7 +145,14 @@ if ($_GET['cancelar']) {
                                         </span>
 
                                         <?php
-                                        if (!$disponivel) {
+                                        if($vendida) {
+                                            ?>
+                                            <span class="estado vendida">
+                                                Vendida
+                                            </span>
+                                            <?php
+                                        }
+                                        else if (!$disponivel) {
                                         ?>
                                             <span class="estado ocupado">
                                                 Ocupada

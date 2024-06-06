@@ -104,7 +104,7 @@ class privados {
 	}
 	function verificaMesaVendida($id_mesa, $data_evento) {
 
-		$query = "SELECT * FROM venda_privados WHERE id_mesa = $id_mesa AND data_evento = '" . $data_evento . "'  ORDER BY id ASC";
+		$query = "SELECT * FROM venda_privados LEFT JOIN privados_salas_mesas_disponibilidade ON  venda_privados.id_reserva = privados_salas_mesas_disponibilidade.id  WHERE venda_privados.id_mesa = $id_mesa AND venda_privados.data_evento = '" . $data_evento . "' AND privados_salas_mesas_disponibilidade.saiu != 1  ORDER BY venda_privados.id ASC";
 		$res = $this->db->query($query);
 		if (!empty($res)) {
 			return $res;

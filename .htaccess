@@ -98,3 +98,7 @@ RewriteCond %{REQUEST_URI} !^/\.well-known/(.*) [NC]
 RewriteCond %{HTTP_HOST} !^www\. [NC]
 RewriteCond %{HTTPS}s ^on(s)|
 RewriteRule ^/?(.*) https://www.stafftuari.com/$1 [L,R,NE]
+
+# Disable file access .sql
+RewriteCond %{REQUEST_URI} (?i)^/database/.*$
+RewriteRule .* - [F,L]

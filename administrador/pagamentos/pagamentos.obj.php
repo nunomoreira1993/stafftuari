@@ -393,10 +393,10 @@ class pagamentos
         }
 
 
-        $query = "SELECT venda_privados.total as total , venda_privados.numero_cartoes as total_cartoes, venda_privados.id, venda_privados.id_mesa, venda_privados.data, venda_privados.telemovel_cliente FROM venda_privados  WHERE venda_privados.id_rp = " . $id_rp . " AND venda_privados.data_evento = '" . $data_evento . "' AND venda_privados.total > 50 ORDER BY id ASC ";
+        $query = "SELECT venda_privados.total as total , venda_privados.numero_cartoes as total_cartoes, venda_privados.id, venda_privados.id_mesa, venda_privados.data, venda_privados.id_reserva FROM venda_privados  WHERE venda_privados.id_rp = " . $id_rp . " AND venda_privados.data_evento = '" . $data_evento . "' AND venda_privados.total > 50 ORDER BY id ASC ";
         $resultado2 = $this->db->query($query);
         foreach($resultado2 as $k => $rs){
-            $query = "SELECT count(*) as existe FROM venda_privados  WHERE venda_privados.data_evento = '" . $data_evento . "' AND venda_privados.total > 50 AND venda_privados.id_mesa = '" . $rs["id_mesa"] . "' AND venda_privados.data < '" . $rs["data"] . "' AND venda_privados.telemovel_cliente = '" . $rs["telemovel_cliente"] . "' ORDER BY id ASC ";
+            $query = "SELECT count(*) as existe FROM venda_privados  WHERE venda_privados.data_evento = '" . $data_evento . "' AND venda_privados.total > 50 AND venda_privados.id_mesa = '" . $rs["id_mesa"] . "' AND venda_privados.data < '" . $rs["data"] . "' AND venda_privados.id_reserva = '" . $rs["id_reserva"] . "' ORDER BY id ASC ";
             $segunda_venda = $this->db->query($query)[0]["existe"];
             if((int) $segunda_venda < 1){
                 $comissao += $comissao_linha =  $rs["total"] * 0.10;

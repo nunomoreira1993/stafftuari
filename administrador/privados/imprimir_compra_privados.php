@@ -87,14 +87,6 @@ $venda = $dbprivados->devolveVendaPrivados($_GET['id']);
             </div>
             <div class="bloco">
                 <span class="label">
-                    Telemovel do Cliente:
-                </span>
-                <span class="valor">
-                    <?php echo $venda['telemovel_cliente']; ?>
-                </span>
-            </div>
-            <div class="bloco">
-                <span class="label">
                     Nome do Gerente:
                 </span>
                 <span class="valor">
