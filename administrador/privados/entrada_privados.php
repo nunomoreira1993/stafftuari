@@ -116,7 +116,7 @@ if ($_GET['remover']) {
                                             }
                                         }
                                     ?>
-                                        <a class="mesa <?php if ($disponivel == 3) { ?> pesquisa ocupar <?php  } else if ($disponivel == 1) { ?> livre <?php } else if ($disponivel == 2) { ?> ocupado <?php } else { ?> ocupada <?php } ?> <?php if ($disponivel == 0) { ?> ocupar <?php } ?>" data-id="<?php echo $mesa['id']; ?>" id="mesa_<?php echo $sala['id'] . "_" . $mesa['codigo_mesa']; ?>" href="javascript:void(0);">
+                                        <a class="mesa <?php if ($disponivel == 3) { ?> pesquisa ocupar <?php  } else if ($disponivel == 1) { ?> livre <?php } else if ($disponivel == 2) { ?> ocupado <?php } else { ?> ocupada <?php } ?> <?php if ($disponivel == 0) { ?> ocupar <?php } ?>" data-id="<?php echo $mesa['id']; ?>" id="mesa_<?php echo $sala['id'] . "_" . str_replace(".", "_", $mesa['codigo_mesa']); ?>" href="javascript:void(0);">
                                             <?php echo $mesa['codigo_mesa']; ?>
                                         </a>
                                     <?php

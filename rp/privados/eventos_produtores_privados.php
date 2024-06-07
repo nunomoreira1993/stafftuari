@@ -69,7 +69,7 @@ if ($_GET['cancelar']) {
                                             }
                                         }
                                         ?>
-                                        <a class="mesa <?php if ($disponivel == 1) { ?> livre <?php } else if ($disponivel == 2) { ?> vendida <?php } else { ?> ocupada <?php } ?>" id="mesa_<?php echo $sala['id'] . "_" . $mesa['codigo_mesa']; ?>" <?php if ($permissao) { ?> href="/rp/index.php?pg=inserir_reserva&id=0&id_mesa=<?php echo $mesa['id']; ?>&data_evento=<?php echo $data_evento; ?>" <?php } ?>>
+                                        <a class="mesa <?php if ($disponivel == 1) { ?> livre <?php } else if ($disponivel == 2) { ?> vendida <?php } else { ?> ocupada <?php } ?>" id="mesa_<?php echo $sala['id'] . "_" . str_replace(".", "_", $mesa['codigo_mesa']); ?>" <?php if ($permissao) { ?> href="/rp/index.php?pg=inserir_reserva&id=0&id_mesa=<?php echo $mesa['id']; ?>&data_evento=<?php echo $data_evento; ?>" <?php } ?>>
                                             <?php echo $mesa['codigo_mesa']; ?>
                                         </a>
                                     <?php

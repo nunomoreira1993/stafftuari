@@ -106,7 +106,7 @@ if ($_GET['cancelar']) {
                                         $disponivel = $dbprivados->verificaMesaDisponivel($mesa['id'], $data_evento, 1);
                                         $vendida = $dbprivados->verificaMesaVendida($mesa['id'], $data_evento, 1);
                                         ?>
-                                        <a class="mesa <?php if ($vendida) { ?> vendida <?php } else if ($disponivel == 1) { ?> livre <?php } else { ?> ocupado <?php } ?> " id="mesa_<?php echo $sala['id'] . "_" . $mesa['codigo_mesa']; ?>" href="?pg=inserir_venda_privados&id_mesa=<?php echo $mesa['id']; ?>&id=0">
+                                        <a class="mesa <?php if ($vendida) { ?> vendida <?php } else if ($disponivel == 1) { ?> livre <?php } else { ?> ocupado <?php } ?> " id="mesa_<?php echo $sala['id'] . "_" . str_replace(".", "_", $mesa['codigo_mesa']); ?>" href="?pg=inserir_venda_privados&id_mesa=<?php echo $mesa['id']; ?>&id=0">
                                             <?php echo $mesa['codigo_mesa']; ?>
                                         </a>
                                     <?php
