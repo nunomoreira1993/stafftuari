@@ -109,6 +109,20 @@ if ($_POST) {
         $_SESSION['erro'] = "Preêncha o valor de pagamento em multibanco.";
     }
     if (empty($_SESSION['erro'])) {
+
+        if($campos['id_reserva'] == 0) {
+            $campos['id_reserva'] = $db->Insert('privados_salas_mesas_disponibilidade', array(
+                "data" => date('Y-m-d H:i:s'),
+                "data_evento" => $campos['data_evento'],
+                "id_mesa" => $campos['id_mesa'],
+                "id_rp" => $campos['id_rp'],
+                "nome" => $campos['nome_cliente'],
+                "garrafas" => $campos['garrafas'],
+                "cartoes" => $campos['numero_cartoes'],
+                "valor" => $campos['total']
+            ));
+        }
+
         if ($_GET['id'] == 0) {
             $id_compra = $db->Insert('venda_privados', $campos);
             $estado = $db->Insert('logs', array('descricao' => "Criou uma venda de privados para a mesa ID " . $campos['id_mesa'], 'arr' => json_encode($campos), 'id_admin' => $_SESSION['id_utilizador'], 'tipo' => "Inserção", 'user_agent' => $_SERVER['HTTP_USER_AGENT'], 'ip' => $_SERVER['REMOTE_ADDR']));
