@@ -41,13 +41,22 @@ class privados
     }
 
 
-    function listaSalas($salas = array())
+    function listaSalas($salas = array(), $activo = 1)
     {
+		$where = "";
+
+		if($activo == 1){
+			$where .= "activo = 1";
+		}
+		else {
+			$where .= "(activo = 1 OR activo = 0)";
+		}
+
         if ($salas) {
-            $where = " AND privados_salas.id in(" . implode(',', $salas).")";
+            $where .= " AND privados_salas.id in(" . implode(',', $salas).")";
         }
 
-        $query = "SELECT * FROM privados_salas WHERE activo = 1 $where ORDER BY id ASC";
+        $query = "SELECT * FROM privados_salas WHERE $where ORDER BY id ASC";
 
         $res = $this->db->query($query);
         return $res;

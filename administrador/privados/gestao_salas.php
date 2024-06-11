@@ -9,7 +9,7 @@ if ($tipo != 1 && $tipo != 3) {
 }
 require_once($_SERVER['DOCUMENT_ROOT'] . '/administrador/privados/privados.obj.php');
 $dbprivados = new privados($db);
-$salas = $dbprivados->listaSalas();
+$salas = $dbprivados->listaSalas([], 0);
 
 if ($_GET['apagar'] == 1 && $_GET['id'] > 0) {
     $sala = $dbprivados->devolveSala($_GET['id']);
