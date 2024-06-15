@@ -42,7 +42,7 @@ if ($mesa_vendida > 0 && $reservaDataEvento["id"] > 0) {
         $venda['total_venda'] = "";
         $venda['total'] = "";
     }
-    $reservaDataEvento = $venda;
+    // $reservaDataEvento = $venda;
     $reservaDataEvento['valor_dinheiro_adiantado'] = 0;
     $reservaDataEvento['valor_multibanco_adiantado'] = 0;
     $reservaDataEvento['valor_mbway_adiantado'] = 0;
@@ -117,6 +117,7 @@ if ($_POST) {
                 "data_evento" => $campos['data_evento'],
                 "id_mesa" => $campos['id_mesa'],
                 "id_rp" => $campos['id_rp'],
+                "id_gerente" => $campos['id_gerente'],
                 "nome" => $campos['nome_cliente'],
                 "garrafas" => $campos['garrafas'],
                 "cartoes" => $campos['numero_cartoes'],
