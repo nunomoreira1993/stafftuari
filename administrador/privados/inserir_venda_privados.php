@@ -28,8 +28,9 @@ if (date('H') < 14) {
 }
 
 $reservaDataEvento = $dbprivados->devolveReservaDataEvento($_GET['id_mesa'], $data);
+
 if($reservaDataEvento) {
-$mesa_vendida = $dbprivados->verificaMesaVendida($_GET['id_mesa'], $data, $reservaDataEvento["id"]);
+    $mesa_vendida = $dbprivados->verificaMesaVendida($_GET['id_mesa'], $data, $reservaDataEvento["id"]);
 }
 
 if ($mesa_vendida > 0 && $reservaDataEvento["id"] > 0) {

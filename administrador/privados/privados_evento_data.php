@@ -9,7 +9,6 @@ $data_evento = $_GET['data'];
 require_once($_SERVER['DOCUMENT_ROOT'] . '/administrador/privados/privados.obj.php');
 $dbprivados = new privados($db);
 $vendas = $dbprivados->listaVendaPrivados(true, $data_evento);
-
 ?>
 <h1 class="titulo"> Vendas de privados em <?php echo $data_evento; ?> </h1>
 <div class="content" <?php echo escreveErroSucesso(); ?>>

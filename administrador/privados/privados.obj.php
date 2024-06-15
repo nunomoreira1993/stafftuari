@@ -20,12 +20,11 @@ class privados
         $query_extra = "";
 
         if($id_reserva > 0) {
-          $query_extra .= " AND venda_privados.id = " . $id_reserva;
+          $query_extra .= " AND venda_privados.id_reserva = " . $id_reserva;
         }
 
         $query = "SELECT * FROM venda_privados WHERE id_mesa = $id_mesa AND data_evento = '" . $data_evento . "' $query_extra ORDER BY id DESC";
         $res = $this->db->query($query);
-
         if (!empty($res)) {
             return $res[0]["id"];
         }
@@ -266,7 +265,7 @@ class privados
     {
         $query_extra = "";
         if($id_reserva > 0) {
-          $query_extra .= " AND venda_privados.id = " . $id_reserva;
+          $query_extra .= " AND venda_privados.id_reserva = " . $id_reserva;
         }
         $query = "SELECT venda_privados.*, rps.nome as nome_rp, rps_gerente.nome as nome_gerente, rps_processado.nome as nome_processado FROM venda_privados INNER JOIN rps ON rps.id = venda_privados.id_rp INNER JOIN rps rps_gerente ON rps_gerente.id = venda_privados.id_gerente LEFT JOIN rps rps_processado ON rps_processado.id = venda_privados.id_processado  WHERE venda_privados.id = '" . $id . " '  $query_extra ORDER BY id ASC";
         $res = $this->db->query($query);
