@@ -444,7 +444,7 @@ class pagamentos
         if ($resultado) {
             foreach ($resultado as $k => $res) {
 
-                $return[$k]['comissao'] = $res['total'] * 0.05;
+                $return[$k]['comissao'] = $res['total'] * 0.10;
                 $return[$k]['descricao'] .= "<b>" . $res['data_evento'] . "</b>: " . intval($res['quantidade']) . " garrafas";
             }
             return $return;
