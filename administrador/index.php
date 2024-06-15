@@ -163,10 +163,15 @@ $tipo = $adm['tipo'];
                                     <a href="?pg=venda_privados" <?php if ($_GET['pg'] == "venda_privados" || $_GET['pg'] == "escolher_mesa_privados" || $_GET['pg'] == "inserir_venda_privados") { ?> class="active" <?php } ?>>
                                         Venda de Privados
                                     </a>
-                                    <a href="?pg=historico_privados" <?php if ($_GET['pg'] == "historico_privados" || $_GET['pg'] == "privados_evento_data") { ?> class="active" <?php } ?>>
-                                        Histórico Privados
-                                    </a>
+
                                     <?php
+                                    if ($tipo == 1) {
+                                    ?>
+                                        <a href="?pg=historico_privados" <?php if ($_GET['pg'] == "historico_privados" || $_GET['pg'] == "privados_evento_data") { ?> class="active" <?php } ?>>
+                                            Histórico Privados
+                                        </a>
+                                    <?php
+                                    }
                                     if ($tipo != 8) {
                                     ?>
                                         <a href="?pg=venda_garrafas" <?php if ($_GET['pg'] == "venda_garrafas" || $_GET['pg'] == "inserir_venda_garrafas") { ?> class="active" <?php } ?>>

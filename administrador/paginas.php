@@ -128,10 +128,6 @@ switch ($pg) {
         include $_SERVER['DOCUMENT_ROOT'] . "/administrador/privados/historico_privados.php";
         break;
 
-    case 'historico_privados':
-        include $_SERVER['DOCUMENT_ROOT'] . "/administrador/privados/historico_privados.php";
-        break;
-
     case 'privados_evento_data':
         include $_SERVER['DOCUMENT_ROOT'] . "/administrador/privados/privados_evento_data.php";
         break;
