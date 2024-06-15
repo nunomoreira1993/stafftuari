@@ -167,35 +167,21 @@ if ($campos) {
                 <input type="text" value="<?php echo $venda['nome_cliente']; ?>" name="nome_cliente" id="input-nome-garrafa" class="teclado_virtual" placeholder="Nome do cliente" autocomplete="new-password" data-type="ajax" data-src="/administrador/privados/teclado.html.php" />
             </div>
         </div>
-        <?php
-        if ($tipo != 1) {
-			// if(empty($venda['id_rp'])){
-				$venda['id_rp'] = 103;
-			// }
-        ?>
-            <input type="hidden" value="<?php echo $venda['id_rp']; ?>" name="id_rp" />
-        <?php
-        }
-        else {
-        ?>
-            <div class="input-grupo">
-                <label for="input-nome">
-                    Staff
-                </label>
-                <div class="input staff">
-                    <input type="hidden" value="<?php echo $venda['id_rp']; ?>" name="id_rp" />
+        <div class="input-grupo">
+            <label for="input-nome">
+                Staff
+            </label>
+            <div class="input staff">
+                <input type="hidden" value="<?php echo $venda['id_rp']; ?>" name="id_rp" />
 
-                    <div class="staff-escolhido">
-                        <?php
-                        include $_SERVER['DOCUMENT_ROOT'] . "/administrador/privados/ajax/staff.html.php";
-                        ?>
-                    </div>
-                    <a data-type="ajax" data-src="/administrador/privados/ajax/rps.ajax.php" href="javascript:;" class="adicionar"><?php if (intval($_GET['id']) > 0) { ?> Alterar <?php } else { ?> Adicionar<?php } ?> Staff</a>
+                <div class="staff-escolhido">
+                    <?php
+                    include $_SERVER['DOCUMENT_ROOT'] . "/administrador/privados/ajax/staff.html.php";
+                    ?>
                 </div>
+                <a data-type="ajax" data-src="/administrador/privados/ajax/rps.ajax.php" href="javascript:;" class="adicionar"><?php if (intval($_GET['id']) > 0) { ?> Alterar <?php } else { ?> Adicionar<?php } ?> Staff</a>
             </div>
-        <?php
-    }
-    ?>
+        </div>
         <div class="input-grupo">
             <label for="input-nome">
                 Bar

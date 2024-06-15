@@ -177,9 +177,16 @@ $tipo = $adm['tipo'];
                                         <a href="?pg=venda_garrafas" <?php if ($_GET['pg'] == "venda_garrafas" || $_GET['pg'] == "inserir_venda_garrafas") { ?> class="active" <?php } ?>>
                                             Venda de Garrafas
                                         </a>
-                                        <a href="?pg=historico_garrafas" <?php if ($_GET['pg'] == "historico_garrafas" || $_GET['pg'] == "garrafas_evento_data") { ?> class="active" <?php } ?>>
-                                            Histórico Garrafas
-                                        </a>
+                                        <?php
+
+                                        if ($tipo == 1) {
+                                        ?>
+                                            <a href="?pg=historico_garrafas" <?php if ($_GET['pg'] == "historico_garrafas" || $_GET['pg'] == "garrafas_evento_data") { ?> class="active" <?php } ?>>
+                                                Histórico Garrafas
+                                            </a>
+                                        <?php
+                                        }
+                                        ?>
                                         <a href="?pg=reservas_garrafas" <?php if ($_GET['pg'] == "reservas_garrafas") { ?> class="active" <?php } ?>>
                                             Reservas de Garrafas
                                         </a>
