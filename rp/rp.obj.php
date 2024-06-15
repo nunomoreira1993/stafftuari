@@ -114,6 +114,9 @@ class rp {
 		if ($data_evento) {
 			$query .= " AND rps_cartoes_consumo_obrigatorio.data_evento = '" . $data_evento . "'";
 		}
+		else {
+			$query .= " AND rps_cartoes_consumo_obrigatorio.data_evento >= '" . date("Y-m-d", strtotime("-1 day")) . "'";
+		}
 
 		$sql = "SELECT * FROM rps_cartoes_consumo_obrigatorio WHERE rps_cartoes_consumo_obrigatorio.id_rp = " . $this->rp . " $query ORDER BY data_evento DESC";
 		$res = $this->db->query($sql);
@@ -154,6 +157,9 @@ class rp {
 		}
 		if ($data_evento) {
 			$query .= " AND rps_cartoes_sem_consumo.data_evento = '" . $data_evento . "'";
+		}
+		else {
+			$query .= " AND rps_cartoes_sem_consumo.data_evento >= '" . date("Y-m-d", strtotime("-1 day")) . "'";
 		}
 
 		$sql = "SELECT * FROM rps_cartoes_sem_consumo WHERE rps_cartoes_sem_consumo.id_rp = " . $this->rp . " $query ORDER BY data_evento DESC";
@@ -427,7 +433,7 @@ class rp {
             return $resultado2[0]['total'] * 0.10;
         }
 	}
-	
+
 	function devolveComissaoGarrafas($data_evento) {
 		$query = "SELECT sum(venda_garrafas_bar.total) as total FROM venda_garrafas_bar INNER JOIN venda_garrafas_bar_garrafas ON venda_garrafas_bar_garrafas.id_compra = venda_garrafas_bar.id  INNER JOIN garrafas ON venda_garrafas_bar_garrafas.id_garrafa = garrafas.id AND garrafas.comissao = 1 WHERE venda_garrafas_bar.id_rp = " . $this->rp . " AND venda_garrafas_bar.data_evento = '" . $data_evento . "' AND venda_garrafas_bar.total > 50 GROUP BY venda_garrafas_bar.data_evento DESC";
 		$resultado  = $this->db->query($query);
