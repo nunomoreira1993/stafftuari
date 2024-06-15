@@ -39,7 +39,7 @@ $gerir_entradas = $dbrps->listaCartoesData($data);
                         <td><?php echo $entradas['nome']; ?></td>
                         <td><?php echo $entradas['nome_rp']; ?></td>
                         <td><?php echo $entradas['tipo_cartao'] == 1 ? "Cartão sem consumo" : "Cartão com 2/bebidas"; ?></td>
-                        <td><?php echo $entradas['entrou'] == 1 ? "Cartão sem consumo" : "Cartão com 2/bebidas"; ?></td>
+                        <td><?php echo $entradas['entrou'] == 1 ? "Sim" : "Não"; ?></td>
                     </tr>
                 <?php
                 }
