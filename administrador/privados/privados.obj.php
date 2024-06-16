@@ -290,6 +290,17 @@ class privados
         return  $this->db->query($query);
     }
 
+    function devolveGarrafaVendaPrivadosData($data_evento)
+    {
+        $query = "SELECT SUM(venda_privados_garrafas.quantidade) as quantidade, venda_privados_garrafas.id_garrafa, garrafas.nome FROM venda_privados_garrafas INNER JOIN garrafas ON garrafas.id = venda_privados_garrafas.id_garrafa INNER JOIN venda_privados ON venda_privados.id = venda_privados_garrafas.id_compra  WHERE venda_privados.data_evento = '" . $data_evento .  "' GROUP BY venda_privados_garrafas.id_garrafa ORDER BY venda_privados_garrafas.id ASC";
+        return  $this->db->query($query);
+    }
+
+    function devolveGarrafaVendaGarrafasData($data_evento)
+    {
+        $query = "SELECT SUM(venda_garrafas_bar_garrafas.quantidade) as quantidade, venda_garrafas_bar_garrafas.id_garrafa, garrafas.nome FROM venda_garrafas_bar_garrafas INNER JOIN garrafas ON garrafas.id = venda_garrafas_bar_garrafas.id_garrafa INNER JOIN venda_garrafas_bar ON venda_garrafas_bar.id = venda_garrafas_bar_garrafas.id_compra  WHERE venda_garrafas_bar.data_evento = '" . $data_evento .  "' GROUP BY venda_garrafas_bar_garrafas.id_garrafa ORDER BY venda_garrafas_bar_garrafas.id ASC";
+        return  $this->db->query($query);
+    }
     function devolveReservaDataEvento($id_mesa, $data_evento)
     {
         $query = "SELECT *, cartoes as numero_cartoes, nome as nome_cliente FROM privados_salas_mesas_disponibilidade WHERE id_mesa = $id_mesa AND data_evento = '" . $data_evento . "' AND saiu = 0  ORDER BY id ASC";
