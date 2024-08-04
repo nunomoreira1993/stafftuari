@@ -94,6 +94,17 @@ $tipo = $adm['tipo'];
                             <span class="nome">Entradas</span>
                         </a>
                         <ul aria-expanded="false" class="collapse in">
+
+                            <li>
+                                <a href="?pg=adicionar_entradas&letra=a" <?php if ($_GET['pg'] == "adicionar_entradas") { ?> class="active" <?php } ?>>
+                                    Adicionar entradas
+                                </a>
+                            </li>
+                            <li>
+                                <a href="?pg=gerir_entradas" <?php if ($_GET['pg'] == "gerir_entradas") { ?> class="active" <?php } ?>>
+                                    Gerir entradas
+                                </a>
+                            </li>
                             <?php
                             if($tipo == 7 || $tipo == 8){
                                 ?>
@@ -106,16 +117,6 @@ $tipo = $adm['tipo'];
                             }
                             else {
                                 ?>
-                                <li>
-                                    <a href="?pg=adicionar_entradas&letra=a" <?php if ($_GET['pg'] == "adicionar_entradas") { ?> class="active" <?php } ?>>
-                                        Adicionar entradas
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="?pg=gerir_entradas" <?php if ($_GET['pg'] == "gerir_entradas") { ?> class="active" <?php } ?>>
-                                        Gerir entradas
-                                    </a>
-                                </li>
                                 <li>
                                     <a href="?pg=cartoes_sem_consumo" <?php if ($_GET['pg'] == "cartoes_sem_consumo") { ?> class="active" <?php } ?>>
                                         Convidados
