@@ -1,4 +1,4 @@
-<?php 
+<?php
 if (empty($_SESSION['id_utilizador'])) {
     header('Location:/index.php');
     exit;
@@ -33,7 +33,7 @@ if ($_GET['apagar'] == 1 && $_GET['id'] > 0) {
                 </tr>
             </thead>
             <tbody>
-                <?php 
+                <?php
                 if (empty($gerir_entradas)) {
                     ?>
                 <td colspan="5">
@@ -52,11 +52,11 @@ if ($_GET['apagar'] == 1 && $_GET['id'] > 0) {
                         <a href="?pg=gerir_entradas&apagar=1&id=<?php echo $entradas['id']; ?>" class="apagar"> <i class="fa fa-close text-danger"></i> </a>
                     </td>
                 </tr>
-                <?php 
+                <?php
             }
             ?>
 
             </tbody>
         </table>
     </div>
-</div> 
+</div>
