@@ -40,26 +40,26 @@ function devolvePaginacao($pagina, $numero, $quantidade)
 	unset($params['p']);
 
 	$url = $parse_url['path']."?".http_build_query($params);
-	
+
 	if ($pagina == 0) {
 		$pagina = 1;
 	}
-	
+
 	$max_page = ceil($numero / $quantidade);
-	if($max_page > 1){		
-			
+	if($max_page > 1){
+
 		$primeira_pag = $pagina - 2;
-		
+
 		if ($primeira_pag < 1) {
 			$primeira_pag = 1;
 		}
-		
+
 		$ultima_pag = $primeira_pag + 5;
-		
+
 		if ($ultima_pag >= $max_page) {
 			$ultima_pag = $max_page;
 		}
-		
+
 		$html = '<div class="paginacao">';
 
 		if ($pagina > 1) {
@@ -535,7 +535,7 @@ function grava_ficheiro($origem, $destino, $maxlargura = 100, $maxaltura = 100, 
 	if ($copy) {
 		copy($params['tmp_name'], $salva);
 	} else {
-		move_uploaded_file($params['tmp_name'], $salva); // Este comando move o arquivo do diretório temporário para o caminho especificado acima 
+		move_uploaded_file($params['tmp_name'], $salva); // Este comando move o arquivo do diretório temporário para o caminho especificado acima
 	}
 
 	return $nome_imagem;
@@ -547,7 +547,7 @@ function euro($preco)
 }
 
 #
-# Converte nome do ficheiro 
+# Converte nome do ficheiro
 #
 function forceFilename($str, $spaceChar = '_')
 {
@@ -600,4 +600,44 @@ function pr($array)
 	echo "<pre>";
 	print_r($array);
 	echo "</pre>";
+}
+
+
+function getWeekInfo($date) {
+    // Converte a data passada em timestamp
+    $timestamp = strtotime($date);
+
+    // Obtém o dia do ano da data passada
+    $dayOfYear = date('z', $timestamp) + 1;
+
+    // Obtém o dia da semana para o primeiro dia do ano (0 = domingo, 1 = segunda, ..., 6 = sábado)
+    $firstDayOfYear = date('w', strtotime(date('Y', $timestamp) . '-01-01'));
+
+    // Ajusta o primeiro dia do ano para que a semana comece na segunda-feira
+    $adjustedFirstDayOfYear = ($firstDayOfYear == 0) ? 6 : $firstDayOfYear - 1;
+
+    // Calcula o número de dias da primeira semana
+    $daysInFirstWeek = 7 - $adjustedFirstDayOfYear;
+
+    // Calcula o número da semana
+    if ($dayOfYear <= $daysInFirstWeek) {
+        $weekOfYear = 1;
+        $startOfWeek = strtotime(date('Y', $timestamp) . '-01-01');
+    } else {
+        $weekOfYear = ceil(($dayOfYear - $daysInFirstWeek) / 7) + 1;
+        $startOfWeek = strtotime(date('Y', $timestamp) . '-01-01') + ($daysInFirstWeek + ($weekOfYear - 2) * 7) * 86400;
+    }
+
+    // Calcula a data inicial e final da semana
+    $endOfWeek = strtotime('+6 days', $startOfWeek);
+
+    // Formata as datas inicial e final da semana
+    $startOfWeekFormatted = date('Y-m-d', $startOfWeek);
+    $endOfWeekFormatted = date('Y-m-d', $endOfWeek);
+
+    return [
+        'week' => $weekOfYear,
+        'start_date' => $startOfWeekFormatted,
+        'end_date' => $endOfWeekFormatted
+    ];
 }
