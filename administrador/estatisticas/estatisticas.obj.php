@@ -186,7 +186,7 @@ class estatisticas {
         return $res;
     }
     function simulateStatisticByPrivadosRPDay($data_evento) {
-        $query = "SELECT count(f.data_evento) as quantidade, f.id_mesa as id_mesa, SUM(f.total) as total, f.data_evento, f.id_cargo, f.id_rp FROM (SELECT venda_privados.id as id, rps.id as id_rp, count(venda_privados.data_evento) as quantidade, venda_privados.id_mesa as id_mesa, (privados_salas_mesas_disponibilidade.valor) as total, venda_privados.data_evento as data_evento, rps.id_cargo FROM venda_privados INNER JOIN rps ON rps.id = venda_privados.id_rp INNER JOIN privados_salas_mesas_disponibilidade ON venda_privados.id_reserva = privados_salas_mesas_disponibilidade.id WHERE venda_privados.data_evento = '" . $data_evento . "' GROUP BY venda_privados.data_evento, venda_privados.id_mesa, venda_privados.id_rp) f  GROUP BY f.id_rp  ORDER BY total DESC";
+        $query = "SELECT SUM(venda_privados.total) as total, venda_privados.id_rp FROM venda_privados  WHERE venda_privados.data_evento = '" . $data_evento . "' AND venda_privados.total > 50 GROUP BY venda_privados.id_rp  ORDER BY total ASC";
         $res = $this->db->query($query);
         return $res;
     }
