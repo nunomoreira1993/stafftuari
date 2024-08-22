@@ -243,6 +243,12 @@ switch ($pg) {
     case 'estatisticas_privados_detalhe':
         include $_SERVER['DOCUMENT_ROOT'] . "/administrador/estatisticas/estatisticas_privados_detalhe.php";
         break;
+    case 'estatisticas_privados_anual':
+        include $_SERVER['DOCUMENT_ROOT'] . "/administrador/estatisticas/estatisticas_privados_anual.php";
+        break;
+    case 'estatisticas_privados_anual_detalhe':
+        include $_SERVER['DOCUMENT_ROOT'] . "/administrador/estatisticas/estatisticas_privados_anual_detalhe.php";
+        break;
 
     case 'estatisticas_rp_detalhe':
         include $_SERVER['DOCUMENT_ROOT'] . "/administrador/estatisticas/estatisticas_rp_detalhe.php";

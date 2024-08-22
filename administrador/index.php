@@ -263,6 +263,9 @@ $tipo = $adm['tipo'];
                                 <a href="?pg=estatisticas_privados" <?php if ($_GET['pg'] == "estatisticas_privados" || $_GET['pg'] == "estatisticas_privados_detalhe") { ?> class="active" <?php } ?>>
                                     Estatísticas Venda de Privados
                                 </a>
+                                <a href="?pg=estatisticas_privados_anual" <?php if ($_GET['pg'] == "estatisticas_privados_anual" || $_GET['pg'] == "estatisticas_privados_anual_detalhe") { ?> class="active" <?php } ?>>
+                                    Estatísticas Venda de Privados Anual
+                                </a>
                                 <a href="?pg=estatisticas_rp" <?php if ($_GET['pg'] == "estatisticas_rp" || $_GET['pg'] == "estatisticas_rp_detalhe") { ?> class="active" <?php } ?>>
                                     Estatísticas de RP
                                 </a>
