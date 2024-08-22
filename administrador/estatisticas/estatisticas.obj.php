@@ -223,7 +223,7 @@ class estatisticas {
     }
     function getStatisticByPrivadosRPYearByYear($year, $limit) {
 
-        $query = "SELECT COUNT(*) as conta FROM estatisticas_privados_semana_rp INNER JOIN rps ON rps.id = estatisticas_privados_semana_rp.id_rp WHERE YEAR(estatisticas_privados_semana_rp.semana_ate) = $year   ORDER BY estatisticas_privados_semana_rp.posicao ASC ";
+        $query = "SELECT COUNT(*) as conta FROM estatisticas_privados_semana_rp INNER JOIN rps ON rps.id = estatisticas_privados_semana_rp.id_rp  WHERE YEAR(estatisticas_privados_semana_rp.semana_ate) = $year GROUP BY rps.id ";
         $res_conta = $this->db->query($query);
 
         $query = "SELECT (ROW_NUMBER() OVER (ORDER BY SUM(estatisticas_privados_semana_rp.total) DESC)) as posicao, SUM(estatisticas_privados_semana_rp.total) as total, rps.nome FROM estatisticas_privados_semana_rp INNER JOIN rps ON rps.id = estatisticas_privados_semana_rp.id_rp  WHERE YEAR(estatisticas_privados_semana_rp.semana_ate) = $year GROUP BY rps.id ORDER BY total DESC $limit";
