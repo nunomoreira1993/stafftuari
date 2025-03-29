@@ -1109,53 +1109,60 @@ body {
   top: 29.8%;
   left: 44.9%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_37 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_41 {
   width: 15.5%;
   height: 6.6%;
   top: 1%;
   left: 5.4%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_38 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_40 {
   width: 15.5%;
   height: 6.6%;
   top: 11%;
   left: 15.6%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_39 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_43 {
   width: 15.5%;
   height: 6.6%;
   top: 1%;
   left: 25.4%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_40 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_42 {
   width: 15.5%;
   height: 6.6%;
   top: 11.2%;
   left: 35.5%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_41 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_45 {
   width: 15.5%;
   height: 6.6%;
   top: 1%;
   left: 43.4%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_42 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_44 {
   width: 15.5%;
   height: 6.6%;
   top: 9.2%;
   left: 57.5%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_43 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_46 {
   width: 15.5%;
   height: 6.6%;
-  top: 1%;
-  left: 67.4%;
+  top: 9%;
+  left: 75.4%;
+  border-radius: 100%;
+}
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_47 {
+  width: 15.5%;
+  height: 6.6%;
+  top: 1.2%;
+  left: 83.5%;
   border-radius: 100%;
 }
 .content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_3_56 {
@@ -1334,21 +1341,21 @@ body {
   left: 33%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_44 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_48 {
   width: 12.3%;
   height: 6.5%;
   top: 5.5%;
   left: 40%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_45 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_49 {
   width: 12.3%;
   height: 6.5%;
   top: 2.5%;
   left: 55%;
   border-radius: 100%;
 }
-.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_46 {
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_50 {
   width: 12.3%;
   height: 6.5%;
   top: 2.5%;
@@ -1374,6 +1381,18 @@ body {
   height: 14.8%;
   top: 75.1%;
   left: 5.9%;
+}
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_C6 {
+  width: 22.3%;
+  height: 14.8%;
+  top: 75.1%;
+  left: 35.9%;
+}
+.content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_C7 {
+  width: 22.3%;
+  height: 14.8%;
+  top: 75.1%;
+  left: 64.9%;
 }
 .content .disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_B9 {
   width: 29.3%;
