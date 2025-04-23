@@ -168,7 +168,7 @@ if ($_GET['cancelar']) {
                                         ?>
                                     </a>
                                     <?php
-                                    if (!$disponivel && $permissao) {
+                                    if (!$disponivel && $cargo == $dbrp->getIDGerente()) {
                                         $reserva = $dbprivados->devolveReservaMesa($mesa['id'], $data_evento);
                                     ?>
                                         <div class="info_reserva">
