@@ -104,7 +104,13 @@ if ($_GET['cancelar']) {
                 <input type="submit" value="Pesquisar" class="adicionar">
             </div>
         </form>
-        <a href="/administrador/exportar/exportar_reservas.php?data=<?php echo $data_evento; ?>" class="exportar-excell"> Exportar para Excell </a>
+		<?php
+		if($cargo == $dbrp->getIDGerente()) {
+			?>
+			<a href="/administrador/exportar/exportar_reservas.php?data=<?php echo $data_evento; ?>" class="exportar-excell"> Exportar para Excell </a>
+		<?php
+		}
+		?>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <?php
