@@ -11,6 +11,12 @@ if($_GET['id']){
 	}
 }
 
+if (date('H') < 14) {
+	$data_evento_now = date('Y-m-d', strtotime('-1 day'));
+} else {
+	$data_evento_now = date('Y-m-d');
+}
+
 $permissao = $dbrp->permissao();
 
 if ($permissao ==0 && $cargo != $dbrp->getIDEmbaixador()) {
@@ -21,9 +27,14 @@ if($_POST){
 	$id_rp = $_SESSION['id_rp'];
 	if($_POST['input']){
 		$data_evento = $_POST['data_evento'];
+
 		if(empty($data_evento)){
 			$_SESSION['erro'] = "Por favor introduza a data do evento.";
 		}
+		if($cargo != $dbrp->getIDGerente() && $data_evento == $data_evento_now && (date('H') >= 17 || date('H') < 14)){
+			$_SESSION['erro'] = "Não é possivel adicionar cartões para o evento de " . $data_evento_now . ", depois das 17h.";
+		}
+
 		if(empty($_SESSION['erro'])){
 			foreach($_POST['input'] as $inputs){
 				$conta = 	$dbrp->validaCartaoSemConsumo($data_evento, intval($_GET['id']));
@@ -31,8 +42,8 @@ if($_POST){
 				if(empty($inputs['nome'])){
 					$_SESSION['erro'] = "Por favor preêncha o campo nome, ou apague o campo";
 				}
-				if($total > 3 && $cargo != 1){
-					$_SESSION['erro'] = "Não é permitido convidar mais de 3 clientes por evento.";
+				if($total > 4 && $cargo != 1){
+					$_SESSION['erro'] = "Não é permitido convidar mais de 4 clientes por evento.";
 				}
 			}
 		}
@@ -82,7 +93,7 @@ else{
 				Data do evento
 			</div>
 			<div class="input">
-				<input name="data_evento" value="<?php echo $data_evento; ?>"  required="required" type="date" min="<?php echo date('Y-m-d', strtotime('-1 day')); ?>" />
+				<input name="data_evento" value="<?php echo $data_evento; ?>"  required="required" type="date" min="<?php echo $data_evento_now; ?>" />
 			</div>
 		</div>
 		<?php

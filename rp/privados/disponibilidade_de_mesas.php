@@ -168,7 +168,7 @@ if ($_GET['cancelar']) {
                                         ?>
                                     </a>
                                     <?php
-                                    if (!$disponivel) {
+                                    if (!$disponivel && $permissao) {
                                         $reserva = $dbprivados->devolveReservaMesa($mesa['id'], $data_evento);
                                     ?>
                                         <div class="info_reserva">
@@ -274,7 +274,6 @@ if ($_GET['cancelar']) {
                                                 </div>
                                             <?php
                                             }
-                                            if ($permissao) {
                                             ?>
                                                 <a href="/rp/index.php?pg=disponibilidade_de_mesas&data_evento=<?php echo $data_evento; ?>&cancelar=1&id_mesa=<?php echo $reserva['id_mesa']; ?>" class="cancelar aviso-popup" data-texto="Deseja cancelar a reserva para a mesa <?php echo $sala['nome']; ?> - <?php echo $mesa['codigo_mesa']; ?> no dia <?php echo $data_evento; ?> ">
                                                     Cancelar reserva
@@ -289,8 +288,7 @@ if ($_GET['cancelar']) {
                                                         Libertar mesa
                                                     </a>
                                             <?php
-                                                }
-                                            }
+											}
                                             ?>
                                         </div>
                                     <?php

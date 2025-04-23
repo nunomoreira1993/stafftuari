@@ -1,5 +1,6 @@
 <?php
 class rp {
+	const gerente = 1;
 	const id_embaixador = 7;
 	const id_chefe_equipa = 20;
 	const id_produtor = 21;
@@ -17,6 +18,9 @@ class rp {
 	}
 	public function getIDProdutor() {
 		return self::id_produtor;
+	}
+	public function getIDGerente() {
+		return self::gerente;
 	}
 	function alterouPassword() {
 		$query = "SELECT alterou_password FROM rps WHERE rps.id = '" . $this->rp . "'";
