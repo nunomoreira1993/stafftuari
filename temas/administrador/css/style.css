@@ -1821,7 +1821,7 @@ body {
   left: 54.5%;
   border-radius: 100%;
 }
-.content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot F #mesa_1_C1 {
+.content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_1_C1 {
   width: 15.4%;
   height: 17%;
   top: 78.7%;
@@ -2212,6 +2212,12 @@ body {
   height: 14.8%;
   top: 1.5%;
   left: 6%;
+}
+.content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_5_B11 {
+  width: 22.3%;
+  height: 14.8%;
+  top: 31.5%;
+  left: 71%;
 }
 .content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_6_1_1 {
   width: 8.3%;
