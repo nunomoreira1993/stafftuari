@@ -36,6 +36,7 @@ if ($_POST) {
     $campos['disponibilidade_mesas'] = intval($_POST['disponibilidade_mesas']);
     $campos['permite_reservar_privados'] = intval($_POST['permite_reservar_privados']);
     $campos['bebidas_cartao'] = intval($_POST['bebidas_cartao']);
+    $campos['convidados'] = intval($_POST['convidados']);
 
 
     if (empty($campos['email']) && empty($campos['telemovel']) && empty($_SESSION['erro'])) {
@@ -196,6 +197,14 @@ if ($campos) {
             </div>
         </div>
 
+        <div class="input-grupo">
+            <label for="input-nome">
+                Número Máximo de Convidados
+            </label>
+            <div class="input">
+                <input type="number" value="<?php echo $rp['convidados'] ? $rp['convidados'] : 4; ?>" name="convidados" id="input-convidados" placeholder="Convidados" />
+            </div>
+        </div>
         <div class="input-grupo">
             <label for="input-nome">
                 Cartão Numero Bebidas Oferta

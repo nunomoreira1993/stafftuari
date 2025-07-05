@@ -38,12 +38,13 @@ if($_POST){
 		if(empty($_SESSION['erro'])){
 			foreach($_POST['input'] as $inputs){
 				$conta = 	$dbrp->validaCartaoSemConsumo($data_evento, intval($_GET['id']));
+				$max_convidados = 	$dbrp->devolveConvidadosRp($id_rp) ?: 4;
 				$total = $conta + count($_POST['input']);
 				if(empty($inputs['nome'])){
 					$_SESSION['erro'] = "Por favor preêncha o campo nome, ou apague o campo";
 				}
-				if($total > 4 && $cargo != 1){
-					$_SESSION['erro'] = "Não é permitido convidar mais de 4 clientes por evento.";
+				if($total > $max_convidados && $cargo != 1){
+					$_SESSION['erro'] = "Não é permitido convidar mais de " . $max_convidados . " clientes por evento.";
 				}
 			}
 		}

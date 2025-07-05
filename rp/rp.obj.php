@@ -87,6 +87,11 @@ class rp {
 		$res = $this->db->query($query);
 		return $res[0]['nome'];
 	}
+	function devolveConvidadosRp($id) {
+		$query = "SELECT convidados FROM rps WHERE id = " . $id . " ORDER BY rps.nome ASC";
+		$res = $this->db->query($query);
+		return $res[0]['convidados'];
+	}
 
 	function devolveInfo() {
 		$sql = "SELECT rps.foto, rps.nome, rps.id, rps_cargos.nome as nome_cargo FROM rps LEFT JOIN rps_cargos ON rps.id_cargo = rps_cargos.id WHERE rps.id = " . $this->rp . " ";
