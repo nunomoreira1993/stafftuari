@@ -3,3 +3,8 @@ fotos/**/*.png
 fotos/**/*.jpeg
 fotos/**/*.jfif
 lib/config.php
+
+
+#6. Ignora arquivos de log
+error_log
+*.log
