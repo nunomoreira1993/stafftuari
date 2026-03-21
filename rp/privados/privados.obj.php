@@ -206,4 +206,75 @@ class privados {
             return $res[0];
         }
     }
+
+	function libertaReserva($id_reserva, $id_mesa, $data_evento)
+	{
+		$id_reserva = intval($id_reserva);
+		$id_mesa = intval($id_mesa);
+		$data_evento = date('Y-m-d', strtotime($data_evento));
+
+		if ($id_reserva <= 0 || $id_mesa <= 0 || empty($data_evento)) {
+			return false;
+		}
+
+		$this->db->update('privados_salas_mesas_disponibilidade', array('saiu' => 1), 'id = ' . $id_reserva);
+		$this->db->query('DELETE from privados_salas_mesas_ocupacao WHERE data_evento = "' . $data_evento . '" AND id_mesa = "' . $id_mesa . '"');
+
+		return true;
+	}
+
+	function libertaReservasMbwayExpiradas($data_evento = false)
+	{
+		$whereData = '';
+
+		if ($data_evento) {
+			$data_evento = date('Y-m-d', strtotime($data_evento));
+			$whereData = " AND data_evento = '" . $data_evento . "' ";
+		}
+
+		$query = "SELECT id, id_mesa, data_evento FROM privados_salas_mesas_disponibilidade
+		WHERE saiu = 0
+		$whereData
+		AND ((IFNULL(reserva_com_valor_antecipado, 0) = 1) OR (IFNULL(valor_caucao_reserva, 0) > 0))
+		AND mbway_data_pedido IS NOT NULL
+		AND mbway_response_status_code != '000'
+		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 4 END) MINUTE) <= NOW()";
+		$reservas = $this->db->query($query);
+		if (empty($reservas)) {
+			return 0;
+		}
+
+		$total = 0;
+		foreach ($reservas as $reserva) {
+			if ($this->libertaReserva($reserva['id'], $reserva['id_mesa'], $reserva['data_evento'])) {
+				$total++;
+			}
+		}
+
+		return $total;
+	}
+
+	function libertaReservaMbwayExpiradaPorId($id_reserva)
+	{
+		$id_reserva = intval($id_reserva);
+		if ($id_reserva <= 0) {
+			return false;
+		}
+
+		$query = "SELECT id, id_mesa, data_evento FROM privados_salas_mesas_disponibilidade
+		WHERE id = " . $id_reserva . "
+		AND saiu = 0
+		AND ((IFNULL(reserva_com_valor_antecipado, 0) = 1) OR (IFNULL(valor_caucao_reserva, 0) > 0))
+		AND mbway_data_pedido IS NOT NULL
+		AND mbway_response_status_code != '000'
+		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 4 END) MINUTE) <= NOW()
+		LIMIT 1";
+
+		$reserva = $this->db->query($query);
+		if (empty($reserva)) {
+			return false;
+		}
+
+		return $this->libertaReserva($reserva[0]['id'], $reserva[0]['id_mesa'], $reserva[0]['data_evento']);
+	}
 }

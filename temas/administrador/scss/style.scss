@@ -484,17 +484,31 @@ body {
       font-size: 0.875rem;
       line-height: 1.5;
       border-radius: 0.25rem;
-      -webkit-transition: color 0.15s ease-in-out,
-        background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+      -webkit-transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
         -webkit-box-shadow 0.15s ease-in-out;
-      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-      -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+      -o-transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out,
         -webkit-box-shadow 0.15s ease-in-out;
       margin-left: 15px;
       display: block;
@@ -573,14 +587,19 @@ body {
           background-clip: padding-box;
           border: 1px solid #e9ecef;
           border-radius: 0.25rem;
-          -webkit-transition: border-color 0.15s ease-in-out,
+          -webkit-transition:
+            border-color 0.15s ease-in-out,
             -webkit-box-shadow 0.15s ease-in-out;
-          transition: border-color 0.15s ease-in-out,
+          transition:
+            border-color 0.15s ease-in-out,
             -webkit-box-shadow 0.15s ease-in-out;
-          transition: border-color 0.15s ease-in-out,
+          transition:
+            border-color 0.15s ease-in-out,
             box-shadow 0.15s ease-in-out;
-          transition: border-color 0.15s ease-in-out,
-            box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+          transition:
+            border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out,
+            -webkit-box-shadow 0.15s ease-in-out;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
         }
@@ -598,14 +617,19 @@ body {
           background-clip: padding-box;
           border: 1px solid #e9ecef;
           border-radius: 0.25rem;
-          -webkit-transition: border-color 0.15s ease-in-out,
+          -webkit-transition:
+            border-color 0.15s ease-in-out,
             -webkit-box-shadow 0.15s ease-in-out;
-          transition: border-color 0.15s ease-in-out,
+          transition:
+            border-color 0.15s ease-in-out,
             -webkit-box-shadow 0.15s ease-in-out;
-          transition: border-color 0.15s ease-in-out,
+          transition:
+            border-color 0.15s ease-in-out,
             box-shadow 0.15s ease-in-out;
-          transition: border-color 0.15s ease-in-out,
-            box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+          transition:
+            border-color 0.15s ease-in-out,
+            box-shadow 0.15s ease-in-out,
+            -webkit-box-shadow 0.15s ease-in-out;
           border-top-right-radius: 0;
           border-bottom-right-radius: 0;
         }
@@ -886,11 +910,13 @@ body {
                 font-size: 0.875rem;
                 line-height: 1.5;
                 border-radius: 0.25rem;
-                transition: color 0.15s ease-in-out,
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
                   border-color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
-                  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                  border-color 0.15s ease-in-out,
+                  box-shadow 0.15s ease-in-out;
                 color: #ffffff;
                 background-color: #fb9678;
                 border-color: #fb9678;
@@ -921,20 +947,26 @@ body {
                 font-size: 0.875rem;
                 line-height: 1.5;
                 border-radius: 0.25rem;
-                -webkit-transition: color 0.15s ease-in-out,
+                -webkit-transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
                   border-color 0.15s ease-in-out,
                   -webkit-box-shadow 0.15s ease-in-out;
-                transition: color 0.15s ease-in-out,
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
                   border-color 0.15s ease-in-out,
                   -webkit-box-shadow 0.15s ease-in-out;
-                transition: color 0.15s ease-in-out,
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
-                  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-                transition: color 0.15s ease-in-out,
+                  border-color 0.15s ease-in-out,
+                  box-shadow 0.15s ease-in-out;
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
-                  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+                  border-color 0.15s ease-in-out,
+                  box-shadow 0.15s ease-in-out,
                   -webkit-box-shadow 0.15s ease-in-out;
                 color: #fff;
                 background-color: #00c292;
@@ -958,11 +990,13 @@ body {
                 font-size: 0.875rem;
                 line-height: 1.5;
                 border-radius: 0.25rem;
-                transition: color 0.15s ease-in-out,
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
                   border-color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
-                  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+                  border-color 0.15s ease-in-out,
+                  box-shadow 0.15s ease-in-out;
                 color: #ffffff;
 
                 &[data-pago="0"] {
@@ -1010,20 +1044,26 @@ body {
                 font-size: 0.875rem;
                 line-height: 1.5;
                 border-radius: 0.25rem;
-                -webkit-transition: color 0.15s ease-in-out,
+                -webkit-transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
                   border-color 0.15s ease-in-out,
                   -webkit-box-shadow 0.15s ease-in-out;
-                transition: color 0.15s ease-in-out,
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
                   border-color 0.15s ease-in-out,
                   -webkit-box-shadow 0.15s ease-in-out;
-                transition: color 0.15s ease-in-out,
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
-                  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-                transition: color 0.15s ease-in-out,
+                  border-color 0.15s ease-in-out,
+                  box-shadow 0.15s ease-in-out;
+                transition:
+                  color 0.15s ease-in-out,
                   background-color 0.15s ease-in-out,
-                  border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+                  border-color 0.15s ease-in-out,
+                  box-shadow 0.15s ease-in-out,
                   -webkit-box-shadow 0.15s ease-in-out;
                 color: #fff;
                 background-color: #fa7953;
@@ -1262,16 +1302,22 @@ body {
             background-clip: padding-box;
             border: 1px solid #e9ecef;
             border-radius: 0.25rem;
-            -webkit-transition: border-color 0.15s ease-in-out,
+            -webkit-transition:
+              border-color 0.15s ease-in-out,
               -webkit-box-shadow 0.15s ease-in-out;
-            transition: border-color 0.15s ease-in-out,
+            transition:
+              border-color 0.15s ease-in-out,
               -webkit-box-shadow 0.15s ease-in-out;
-            -o-transition: border-color 0.15s ease-in-out,
+            -o-transition:
+              border-color 0.15s ease-in-out,
               box-shadow 0.15s ease-in-out;
-            transition: border-color 0.15s ease-in-out,
+            transition:
+              border-color 0.15s ease-in-out,
               box-shadow 0.15s ease-in-out;
-            transition: border-color 0.15s ease-in-out,
-              box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition:
+              border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out,
+              -webkit-box-shadow 0.15s ease-in-out;
           }
 
           select {
@@ -1295,18 +1341,26 @@ body {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            -webkit-transition: background-color 0.15s ease-in-out,
+            -webkit-transition:
+              background-color 0.15s ease-in-out,
               border-color 0.15s ease-in-out,
               -webkit-box-shadow 0.15s ease-in-out;
-            transition: background-color 0.15s ease-in-out,
+            transition:
+              background-color 0.15s ease-in-out,
               border-color 0.15s ease-in-out,
               -webkit-box-shadow 0.15s ease-in-out;
-            -o-transition: background-color 0.15s ease-in-out,
-              border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            transition: background-color 0.15s ease-in-out,
-              border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            transition: background-color 0.15s ease-in-out,
-              border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+            -o-transition:
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out;
+            transition:
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out;
+            transition:
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out,
               -webkit-box-shadow 0.15s ease-in-out;
           }
 
@@ -1326,21 +1380,32 @@ body {
             font-size: 0.875rem;
             line-height: 1.5;
             border-radius: 0.25rem;
-            -webkit-transition: color 0.15s ease-in-out,
-              background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            -webkit-transition:
+              color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
               -webkit-box-shadow 0.15s ease-in-out;
-            transition: color 0.15s ease-in-out,
-              background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            transition:
+              color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
               -webkit-box-shadow 0.15s ease-in-out;
-            -o-transition: color 0.15s ease-in-out,
-              background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            -o-transition:
+              color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
               box-shadow 0.15s ease-in-out;
-            transition: color 0.15s ease-in-out,
-              background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+            transition:
+              color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
               box-shadow 0.15s ease-in-out;
-            transition: color 0.15s ease-in-out,
-              background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-              box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+            transition:
+              color 0.15s ease-in-out,
+              background-color 0.15s ease-in-out,
+              border-color 0.15s ease-in-out,
+              box-shadow 0.15s ease-in-out,
+              -webkit-box-shadow 0.15s ease-in-out;
             color: #fff;
             background-color: #00c292;
             border-color: #00c292;
@@ -1373,17 +1438,31 @@ body {
       font-size: 0.875rem;
       line-height: 1.5;
       border-radius: 0.25rem;
-      -webkit-transition: color 0.15s ease-in-out,
-        background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+      -webkit-transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
         -webkit-box-shadow 0.15s ease-in-out;
-      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-      -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-      transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
+      -o-transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+      transition:
+        color 0.15s ease-in-out,
+        background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out,
         -webkit-box-shadow 0.15s ease-in-out;
       font-size: 22px;
       color: #fff;
@@ -1599,12 +1678,18 @@ body {
         background-clip: padding-box;
         border: 1px solid #e9ecef;
         border-radius: 0.25rem;
-        -webkit-transition: border-color 0.15s ease-in-out,
+        -webkit-transition:
+          border-color 0.15s ease-in-out,
           -webkit-box-shadow 0.15s ease-in-out;
-        transition: border-color 0.15s ease-in-out,
+        transition:
+          border-color 0.15s ease-in-out,
           -webkit-box-shadow 0.15s ease-in-out;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+        transition:
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
+        transition:
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out,
           -webkit-box-shadow 0.15s ease-in-out;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -1629,15 +1714,26 @@ body {
         font-size: 0.875rem;
         line-height: 1.5;
         border-radius: 0.25rem;
-        -webkit-transition: color 0.15s ease-in-out,
-          background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        -webkit-transition:
+          color 0.15s ease-in-out,
+          background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out,
           -webkit-box-shadow 0.15s ease-in-out;
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-          border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-          border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+        transition:
+          color 0.15s ease-in-out,
+          background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out,
+          -webkit-box-shadow 0.15s ease-in-out;
+        transition:
+          color 0.15s ease-in-out,
+          background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out;
+        transition:
+          color 0.15s ease-in-out,
+          background-color 0.15s ease-in-out,
+          border-color 0.15s ease-in-out,
+          box-shadow 0.15s ease-in-out,
           -webkit-box-shadow 0.15s ease-in-out;
         color: #fff;
         background-color: #00c292;
@@ -1870,6 +1966,9 @@ body {
 
                 &.ocupado {
                   background: #c20000;
+                }
+                &.aguardar_adiantamento {
+                  background: #000000;
                 }
               }
               #mesa_1_1 {
@@ -3130,6 +3229,9 @@ body {
 
                   &.ocupado {
                     background: #c20000;
+                  }
+                  &.aguardar_adiantamento {
+                    background: #000000;
                   }
                 }
 

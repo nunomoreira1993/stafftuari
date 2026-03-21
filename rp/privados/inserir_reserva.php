@@ -5,6 +5,8 @@ $dbrp = new rp($db, $_SESSION['id_rp']);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/rp/privados/privados.obj.php');
 $dbprivados = new privados($db);
 
+require_once($_SERVER['DOCUMENT_ROOT'] . '/multibanco-e-ou-payshop-by-lusopay/class-lusopay-api-client.php');
+
 $permissao = $dbrp->permissao();
 
 $rps = $dbrp->listaRps();
@@ -38,7 +40,13 @@ $mensagem_default = $dbprivados->getMensagemDefault();
 
 $campos = array();
 
+$reserva_com_valor_antecipado = 'sim';
+$valor_caucao_reserva = '';
+$mbway_numero = '351';
+
 if ($_POST) {
+    $mbway_timeout = 0;
+
     $id_gerente = $_SESSION['id_rp'];
     $id_rp = $_POST['id_rp'];
     $nome_cliente = $_POST['nome'];
@@ -48,6 +56,14 @@ if ($_POST) {
     $garrafas = $_POST['garrafas'];
     $cartoes = $_POST['cartoes'];
     $valor = $_POST['valor'];
+    $reserva_com_valor_antecipado = isset($_POST['reserva_com_valor_antecipado']) && $_POST['reserva_com_valor_antecipado'] === 'nao' ? 'nao' : 'sim';
+    $valor_caucao_reserva = isset($_POST['valor_caucao_reserva']) ? (float) str_replace(',', '.', $_POST['valor_caucao_reserva']) : 0;
+    $mbway_numero = isset($_POST['mbway_numero']) ? preg_replace('/\D+/', '', $_POST['mbway_numero']) : '';
+
+    if (strpos($mbway_numero, '351') === 0 && strlen($mbway_numero) === 12) {
+        $mbway_numero = substr($mbway_numero, 3);
+    }
+
     $mensagem = trim(str_replace("{VALOR}", ($valor / 2) , $_POST['mensagem']));
     $mensagem = trim(str_replace("{NOME}", ($nome_array[0]) , $mensagem));
     $mensagem = trim(str_replace("{DATA}", (date('d/m/Y', strtotime($data_evento))), $mensagem));
@@ -68,6 +84,16 @@ if ($_POST) {
     }
     if (empty($id_gerente)) {
         $_SESSION['erro'] = "Não foi possivel inserir a reserva porque existe agente.";
+    }
+
+    if ($reserva_com_valor_antecipado === 'sim') {
+        if ($valor_caucao_reserva <= 0) {
+            $_SESSION['erro'] = "Por favor introduza um Valor Caução de Reserva superior a 0.";
+        }
+
+        if (!preg_match('/^9[1236]\d{7}$/', $mbway_numero)) {
+            $_SESSION['erro'] = "Por favor introduza um Nº MB Way português válido.";
+        }
     }
 
     if (strlen($telemovel) > 8 && $mensagem && empty($sms_enviada)) {
@@ -99,15 +125,74 @@ if ($_POST) {
         $campos['garrafas'] = $garrafas;
         $campos['cartoes'] = $cartoes;
         $campos['valor'] = $valor;
+        $campos['reserva_com_valor_antecipado'] = $reserva_com_valor_antecipado === 'sim' ? 1 : 0;
+        $campos['valor_caucao_reserva'] = $reserva_com_valor_antecipado === 'sim' ? number_format($valor_caucao_reserva, 2, '.', '') : null;
+        $campos['mbway_numero'] = $reserva_com_valor_antecipado === 'sim' ? $mbway_numero : null;
         $campos['mensagem'] = $mensagem;
         $campos['telemovel'] = $telemovel;
 
+        if ($reserva_com_valor_antecipado === 'sim') {
+            try {
+                $lusopayClientGuid = isset($cfg_lusopay['client_guid']) ? $cfg_lusopay['client_guid'] : 'BA3FB8CE-1F40-4F4C-AF84-3F55C2D7C1CB';
+                $lusopayVatNumber = isset($cfg_lusopay['vat_number']) ? $cfg_lusopay['vat_number'] : '514791535';
 
+                $lusopayClient = new LusopayApiClient(
+                    $lusopayClientGuid,
+                    $lusopayVatNumber,
+                    array(
+                        'timeout' => 30,
+                        'verify_ssl' => true,
+                    )
+                );
+
+                $mbwayOrderId = 'RES' . date('YmdHis') . random_int(100, 999);
+                $mbwayResponse = $lusopayClient->sendMbWayRequest(
+                    $mbwayOrderId,
+                    $valor_caucao_reserva,
+                    $mbway_numero,
+                    false
+                );
+
+                $mbwayStatusCode = (string) ($mbwayResponse['statusCode'] ?? '');
+                if ($mbwayStatusCode !== '000') {
+                    $erroMbway = trim((string) ($mbwayResponse['statusMessage'] ?? $mbwayResponse['message'] ?? 'Erro desconhecido.'));
+                    $_SESSION['erro'] = "Não foi possível enviar o pedido MB Way da caução: " . $erroMbway;
+                } else {
+                    $campos['mbway_order_id'] = $mbwayOrderId;
+                    $campos['mbway_status_code'] = $mbwayStatusCode;
+                    $campos['mbway_token'] = isset($mbwayResponse['token']) ? (string) $mbwayResponse['token'] : null;
+                    $campos['mbway_status_mensagem'] = isset($mbwayResponse['statusMessage']) ? (string) $mbwayResponse['statusMessage'] : null;
+                    $campos['mbway_data_pedido'] = date('Y-m-d H:i:s');
+                }
+            } catch (Throwable $e) {
+                $mensagemErroMbway = (string) $e->getMessage();
+                $erroTimeoutMbway = stripos($mensagemErroMbway, 'Timeout na chamada Lusopay') !== false || stripos($mensagemErroMbway, 'timed out') !== false;
+
+                if ($erroTimeoutMbway) {
+                    $mbway_timeout = 1;
+                    $campos['mbway_order_id'] = isset($mbwayOrderId) ? $mbwayOrderId : ('RES' . date('YmdHis') . random_int(100, 999));
+                    $campos['mbway_status_code'] = 'TIMEOUT';
+                    $campos['mbway_status_mensagem'] = 'Pedido MB Way sem resposta imediata (timeout). A aguardar pagamento até 15 minutos.';
+                    $campos['mbway_data_pedido'] = date('Y-m-d H:i:s');
+                } else {
+                    $_SESSION['erro'] = "Erro ao comunicar com Lusopay MB Way: " . $mensagemErroMbway;
+                }
+            }
+        }
+
+        if (!empty($_SESSION['erro'])) {
+            $campos = array();
+        }
+
+        if (empty($_SESSION['erro'])) {
         if ($_GET['id']) {
             $db->Update('privados_salas_mesas_disponibilidade', $campos, 'id=' . intval($_GET['id']));
 
             if ($campos['sms_erro'] == 1) {
                 $_SESSION['erro'] = "Reserva criada mas houve um erro a enviar a SMS: ". $campos['sms_erro_mensagem'];
+            }
+            else if ($mbway_timeout == 1) {
+                $_SESSION['sucesso'] = "A reserva foi alterada. Pedido MB Way em processamento; aguarde até 15 minutos.";
             }
             else{
                 $_SESSION['sucesso'] = "A reserva foi alterada.";
@@ -118,12 +203,16 @@ if ($_POST) {
             if ($campos['sms_erro'] == 1) {
                 $_SESSION['erro'] = "Reserva criada mas houve um erro a enviar a SMS: ". $campos['sms_erro_mensagem'];
             }
+            else if ($mbway_timeout == 1) {
+                $_SESSION['sucesso'] = "A reserva foi criada. Pedido MB Way em processamento; aguarde até 15 minutos.";
+            }
             else{
                 $_SESSION['sucesso'] = "A reserva foi criada";
             }
         }
         header('Location: /rp/index.php?pg=disponibilidade_de_mesas&data_evento=' . $_GET['data_evento'] . '#sala_' . $mesa['id_sala']);
         exit;
+        }
     }
 }
 ?>
@@ -170,7 +259,8 @@ if ($_POST) {
                     <?php
                     foreach ($rps as $rp) {
                     ?>
-                        <option value="<?php echo $rp['id']; ?>" <?php if ($id_rp == $rp['id']) { ?> selected="selected" <?php } ?>><?php echo $rp['nome']; ?> </option>
+                    <option value="<?php echo $rp['id']; ?>" <?php if ($id_rp == $rp['id']) { ?> selected="selected"
+                        <?php } ?>><?php echo $rp['nome']; ?> </option>
                     <?php
                     }
                     ?>
@@ -198,7 +288,7 @@ if ($_POST) {
 
         <div class="inputs">
             <div class="label">
-                Valor (€)
+                Valor Total Privado
             </div>
             <div class="input">
                 <input name="valor" value="<?php echo $valor; ?>" type="number" step="0.01" />
@@ -207,13 +297,49 @@ if ($_POST) {
 
         <div class="inputs">
             <div class="label">
+                Reserva com valor antecipado?
+            </div>
+            <div class="input">
+                <select name="reserva_com_valor_antecipado" id="reserva_com_valor_antecipado">
+                    <option value="sim" <?php if ($reserva_com_valor_antecipado === 'sim') { ?> selected="selected"
+                        <?php } ?>>Sim</option>
+                    <option value="nao" <?php if ($reserva_com_valor_antecipado === 'nao') { ?> selected="selected"
+                        <?php } ?>>Não</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="campos-antecipado">
+            <br>
+            <div class="inputs">
+                <div class="label">
+                    Valor Caução de Reserva
+                </div>
+                <div class="input">
+                    <input name="valor_caucao_reserva" id="valor_caucao_reserva"
+                        value="<?php echo $valor_caucao_reserva; ?>" type="number" step="0.01" min="0" />
+                </div>
+            </div>
+
+            <div class="inputs">
+                <div class="label">
+                    Nº MB Way
+                </div>
+                <div class="input">
+                    <input name="mbway_numero" id="mbway_numero" value="<?php echo $mbway_numero; ?>" type="tel" />
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="inputs">
+            <div class="label">
                 Nº de Telemovel
             </div>
             <div class="input">
                 <input name="telemovel" value="<?php echo $telemovel?$telemovel:"+351"; ?>" type="tel" step="0.01" />
             </div>
         </div>
-
+        -->
 
         <div class="inputs">
             <input type="submit" value="Enviar" />
@@ -230,3 +356,39 @@ if ($_POST) {
         </div>
     </form>
 </div>
+
+<script>
+(function() {
+    var selectAntecipado = document.getElementById('reserva_com_valor_antecipado');
+    var blocoAntecipado = document.getElementById('campos-antecipado');
+    var valorCaucaoInput = document.getElementById('valor_caucao_reserva');
+    var mbwayInput = document.getElementById('mbway_numero');
+
+    function toggleCamposAntecipado() {
+        var comAntecipado = selectAntecipado && selectAntecipado.value === 'sim';
+
+        if (blocoAntecipado) {
+            blocoAntecipado.style.display = comAntecipado ? '' : 'none';
+        }
+
+        if (valorCaucaoInput) {
+            valorCaucaoInput.required = comAntecipado;
+            if (!comAntecipado) {
+                valorCaucaoInput.value = '';
+            }
+        }
+
+        if (mbwayInput) {
+            mbwayInput.required = comAntecipado;
+            if (!comAntecipado) {
+                mbwayInput.value = '';
+            }
+        }
+    }
+
+    if (selectAntecipado) {
+        selectAntecipado.addEventListener('change', toggleCamposAntecipado);
+        toggleCamposAntecipado();
+    }
+})();
+</script>

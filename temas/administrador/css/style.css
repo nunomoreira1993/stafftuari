@@ -1702,6 +1702,9 @@ body {
 .content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot .mesa.ocupado {
   background: #c20000;
 }
+.content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot .mesa.aguardar_adiantamento {
+  background: #000000;
+}
 .content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .hotspot #mesa_1_1 {
   width: 8.3%;
   height: 6.5%;
@@ -2908,6 +2911,8 @@ body {
 }
 .content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .mesas .mesa .estado.ocupado {
   background: #c20000;
+}.content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .mesas .mesa .estado.aguardar_adiantamento {
+  background: #000000;
 }
 .content .conteudo.disponibilidade .swiper-container .swiper-wrapper .swiper-slide .mesas .mesa .info_reserva {
   width: 100%;
