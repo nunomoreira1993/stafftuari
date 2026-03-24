@@ -215,32 +215,18 @@ class privados {
 		return !empty($res);
 	}
 
-	function geraCodigoPagamentoMbway($data_evento, $nome_sala, $codigo_mesa)
+	function geraCodigoPagamentoMbway($data_evento, $id_sala, $codigo_mesa, $id_reserva)
 	{
 		$dataCodigo = date('Ymd', strtotime($data_evento));
 		if ($dataCodigo === '19700101') {
 			$dataCodigo = date('Ymd');
 		}
 
-		$salaCodigo = $this->normalizaParteCodigoPagamento($nome_sala, 'SALA', 4);
-		$mesaCodigo = $this->normalizaParteCodigoPagamento($codigo_mesa, 'MESA', 4);
+		$salaCodigo = max(0, intval($id_sala));
+		$mesaCodigo = $this->normalizaParteCodigoPagamento($codigo_mesa, 'MESA', 10);
+		$reservaCodigo = max(0, intval($id_reserva));
 
-		$proximoId = 1;
-		$resStatus = $this->db->query("SHOW TABLE STATUS LIKE 'privados_salas_mesas_disponibilidade'");
-		if (!empty($resStatus) && !empty($resStatus[0]['Auto_increment'])) {
-			$proximoId = intval($resStatus[0]['Auto_increment']);
-		}
-
-		$tentativa = 0;
-		do {
-			$incremental = str_pad((string) ($proximoId + $tentativa), 6, '0', STR_PAD_LEFT);
-			$mbwayOrderId = $dataCodigo . '-' . $salaCodigo . '-' . $mesaCodigo . '-' . $incremental;
-			$tentativa++;
-		} while ($this->mbwayOrderIdExiste($mbwayOrderId) && $tentativa < 50);
-
-		if ($this->mbwayOrderIdExiste($mbwayOrderId)) {
-			$mbwayOrderId .= '-' . strtoupper(substr(md5(uniqid('', true)), 0, 4));
-		}
+		$mbwayOrderId = $dataCodigo . '-' . $salaCodigo . '-' . $mesaCodigo . '-' . $reservaCodigo;
 
 		return $mbwayOrderId;
 	}

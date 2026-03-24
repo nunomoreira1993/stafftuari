@@ -46,6 +46,7 @@ $mbway_numero = '351';
 
 if ($_POST) {
     $mbway_timeout = 0;
+    $idReservaDisponibilidade = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
     $id_gerente = $_SESSION['id_rp'];
     $id_rp = $_POST['id_rp'];
@@ -131,7 +132,14 @@ if ($_POST) {
         $campos['mensagem'] = $mensagem;
         $campos['telemovel'] = $telemovel;
 
-        if ($reserva_com_valor_antecipado === 'sim') {
+        if ($reserva_com_valor_antecipado === 'sim' && $idReservaDisponibilidade <= 0) {
+            $idReservaDisponibilidade = intval($db->Insert('privados_salas_mesas_disponibilidade', $campos));
+            if ($idReservaDisponibilidade <= 0) {
+                $_SESSION['erro'] = "Não foi possível criar a reserva para enviar o pedido MB Way.";
+            }
+        }
+
+        if ($reserva_com_valor_antecipado === 'sim' && empty($_SESSION['erro'])) {
             try {
                 $lusopayClientGuid = isset($cfg_lusopay['client_guid']) ? $cfg_lusopay['client_guid'] : 'BA3FB8CE-1F40-4F4C-AF84-3F55C2D7C1CB';
                 $lusopayVatNumber = isset($cfg_lusopay['vat_number']) ? $cfg_lusopay['vat_number'] : '514791535';
@@ -145,7 +153,7 @@ if ($_POST) {
                     )
                 );
 
-                $mbwayOrderId = $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['nome'], $mesa['codigo_mesa']);
+                $mbwayOrderId = $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['id'], $mesa['codigo_mesa'], $idReservaDisponibilidade);
                 $mbwayResponse = $lusopayClient->sendMbWayRequest(
                     $mbwayOrderId,
                     $valor_caucao_reserva,
@@ -170,7 +178,7 @@ if ($_POST) {
 
                 if ($erroTimeoutMbway) {
                     $mbway_timeout = 1;
-                    $campos['mbway_order_id'] = isset($mbwayOrderId) ? $mbwayOrderId : $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['nome'], $mesa['codigo_mesa']);
+                    $campos['mbway_order_id'] = isset($mbwayOrderId) ? $mbwayOrderId : $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['id'], $mesa['codigo_mesa'], $idReservaDisponibilidade);
                     $campos['mbway_status_code'] = 'TIMEOUT';
                     $campos['mbway_status_mensagem'] = 'Pedido MB Way sem resposta imediata (timeout). A aguardar pagamento até 15 minutos.';
                     $campos['mbway_data_pedido'] = date('Y-m-d H:i:s');
@@ -181,6 +189,10 @@ if ($_POST) {
         }
 
         if (!empty($_SESSION['erro'])) {
+            if ($reserva_com_valor_antecipado === 'sim' && empty($_GET['id']) && $idReservaDisponibilidade > 0) {
+                $db->query('DELETE FROM privados_salas_mesas_disponibilidade WHERE id = ' . intval($idReservaDisponibilidade));
+                $idReservaDisponibilidade = 0;
+            }
             $campos = array();
         }
 
@@ -196,6 +208,19 @@ if ($_POST) {
             }
             else{
                 $_SESSION['sucesso'] = "A reserva foi alterada.";
+            }
+
+        } else if ($reserva_com_valor_antecipado === 'sim' && $idReservaDisponibilidade > 0) {
+            $db->Update('privados_salas_mesas_disponibilidade', $campos, 'id=' . $idReservaDisponibilidade);
+
+            if ($campos['sms_erro'] == 1) {
+                $_SESSION['erro'] = "Reserva criada mas houve um erro a enviar a SMS: ". $campos['sms_erro_mensagem'];
+            }
+            else if ($mbway_timeout == 1) {
+                $_SESSION['sucesso'] = "A reserva foi criada. Pedido MB Way em processamento; aguarde até 15 minutos.";
+            }
+            else{
+                $_SESSION['sucesso'] = "A reserva foi criada";
             }
 
         } else {
