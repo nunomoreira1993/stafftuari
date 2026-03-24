@@ -215,18 +215,17 @@ class privados {
 		return !empty($res);
 	}
 
-	function geraCodigoPagamentoMbway($data_evento, $id_sala, $codigo_mesa, $id_reserva)
+	function geraCodigoPagamentoMbway($data_evento, $codigo_mesa, $id_reserva)
 	{
 		$dataCodigo = date('Ymd', strtotime($data_evento));
 		if ($dataCodigo === '19700101') {
 			$dataCodigo = date('Ymd');
 		}
 
-		$salaCodigo = max(0, intval($id_sala));
 		$mesaCodigo = $this->normalizaParteCodigoPagamento($codigo_mesa, 'MESA', 10);
 		$reservaCodigo = max(0, intval($id_reserva));
 
-		$mbwayOrderId = $dataCodigo . '-' . $salaCodigo . '-' . $mesaCodigo . '-' . $reservaCodigo;
+		$mbwayOrderId = $reservaCodigo . '-' . $mesaCodigo . '-' . $dataCodigo;
 
 		return $mbwayOrderId;
 	}

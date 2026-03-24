@@ -348,14 +348,6 @@ if ($_GET['auto_libertar_expirada'] == 1 && $_GET['id_reserva']) {
                                     <?php echo euro($reserva['valor']); ?>
                                 </span>
                             </div>
-                            <div class="bloco">
-                                <span class="titulo">
-                                    SMS Enviada
-                                </span>
-                                <span class="valor">
-                                    <?php echo ($reserva['sms_enviada']) ? "Sim" : "Não"; ?>
-                                </span>
-                            </div>
                             <?php
                                             if (!empty($reserva['mbway_order_id'])) {
                                             ?>

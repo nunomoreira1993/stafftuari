@@ -65,10 +65,8 @@ if ($_POST) {
         $mbway_numero = substr($mbway_numero, 3);
     }
 
-    $mensagem = trim(str_replace("{VALOR}", ($valor / 2) , $_POST['mensagem']));
-    $mensagem = trim(str_replace("{NOME}", ($nome_array[0]) , $mensagem));
-    $mensagem = trim(str_replace("{DATA}", (date('d/m/Y', strtotime($data_evento))), $mensagem));
-    $telemovel = $_POST['telemovel'];
+    $mensagem = '';
+    $telemovel = isset($_POST['telemovel']) ? $_POST['telemovel'] : '';
 
 
     if (empty($data_evento)) {
@@ -153,7 +151,7 @@ if ($_POST) {
                     )
                 );
 
-                $mbwayOrderId = $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['id'], $mesa['codigo_mesa'], $idReservaDisponibilidade);
+                $mbwayOrderId = $dbprivados->geraCodigoPagamentoMbway($data_evento, $mesa['codigo_mesa'], $idReservaDisponibilidade);
                 $mbwayResponse = $lusopayClient->sendMbWayRequest(
                     $mbwayOrderId,
                     $valor_caucao_reserva,
@@ -178,7 +176,7 @@ if ($_POST) {
 
                 if ($erroTimeoutMbway) {
                     $mbway_timeout = 1;
-                    $campos['mbway_order_id'] = isset($mbwayOrderId) ? $mbwayOrderId : $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['id'], $mesa['codigo_mesa'], $idReservaDisponibilidade);
+                    $campos['mbway_order_id'] = isset($mbwayOrderId) ? $mbwayOrderId : $dbprivados->geraCodigoPagamentoMbway($data_evento, $mesa['codigo_mesa'], $idReservaDisponibilidade);
                     $campos['mbway_status_code'] = 'TIMEOUT';
                     $campos['mbway_status_mensagem'] = 'Pedido MB Way sem resposta imediata (timeout). A aguardar pagamento até 15 minutos.';
                     $campos['mbway_data_pedido'] = date('Y-m-d H:i:s');
@@ -368,16 +366,6 @@ if ($_POST) {
 
         <div class="inputs">
             <input type="submit" value="Enviar" />
-        </div>
-
-
-        <div class="inputs">
-            <div class="label">
-                Pre-visalização de mensagem
-            </div>
-            <div class="input">
-                <textarea name="mensagem"><?php echo $mensagem_default;?></textarea>
-            </div>
         </div>
     </form>
 </div>
