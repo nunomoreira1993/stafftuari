@@ -142,7 +142,7 @@ class privados {
 	}
 
 	function devolveReservasMesas($data_evento) {
-		$query = "SELECT privados_salas_mesas.codigo_mesa, privados_salas_mesas_disponibilidade.*, rp_staff.nome as rp_staff, rp_gerente.nome as rp_gerente FROM privados_salas_mesas_disponibilidade  INNER JOIN privados_salas_mesas ON privados_salas_mesas.id = privados_salas_mesas_disponibilidade.id_mesa LEFT JOIN rps  rp_staff ON privados_salas_mesas_disponibilidade.id_rp = rp_staff.id LEFT JOIN rps  rp_gerente ON privados_salas_mesas_disponibilidade.id_gerente = rp_gerente.id WHERE privados_salas_mesas_disponibilidade.data_evento = '" . $data_evento . "'  ORDER BY privados_salas_mesas.id_sala ASC, privados_salas_mesas.id ASC";
+		$query = "SELECT privados_salas_mesas.codigo_mesa, privados_salas_mesas_disponibilidade.*, rp_staff.nome as rp_staff, rp_gerente.nome as rp_gerente FROM privados_salas_mesas_disponibilidade  INNER JOIN privados_salas_mesas ON privados_salas_mesas.id = privados_salas_mesas_disponibilidade.id_mesa LEFT JOIN rps  rp_staff ON privados_salas_mesas_disponibilidade.id_rp = rp_staff.id LEFT JOIN rps  rp_gerente ON privados_salas_mesas_disponibilidade.id_gerente = rp_gerente.id WHERE privados_salas_mesas_disponibilidade.data_evento = '" . $data_evento . "' AND privados_salas_mesas_disponibilidade.saiu = 0 ORDER BY privados_salas_mesas.id_sala ASC, privados_salas_mesas.id ASC";
 		$res = $this->db->query($query);
 
 		return $res;
@@ -193,6 +193,58 @@ class privados {
 		return $mensagem;
 	}
 
+	private function normalizaParteCodigoPagamento($valor, $fallback = 'X', $maxLen = 4)
+	{
+		$valor = strtoupper((string) $valor);
+		$valor = preg_replace('/[^A-Z0-9]/', '', $valor);
+		$valor = substr($valor, 0, $maxLen);
+
+		if ($valor === '') {
+			return $fallback;
+		}
+
+		return $valor;
+	}
+
+	private function mbwayOrderIdExiste($mbwayOrderId)
+	{
+		$mbwayOrderIdEsc = $this->db->escape_string($mbwayOrderId);
+		$query = "SELECT id FROM privados_salas_mesas_disponibilidade WHERE mbway_order_id = '" . $mbwayOrderIdEsc . "' LIMIT 1";
+		$res = $this->db->query($query);
+
+		return !empty($res);
+	}
+
+	function geraCodigoPagamentoMbway($data_evento, $nome_sala, $codigo_mesa)
+	{
+		$dataCodigo = date('Ymd', strtotime($data_evento));
+		if ($dataCodigo === '19700101') {
+			$dataCodigo = date('Ymd');
+		}
+
+		$salaCodigo = $this->normalizaParteCodigoPagamento($nome_sala, 'SALA', 4);
+		$mesaCodigo = $this->normalizaParteCodigoPagamento($codigo_mesa, 'MESA', 4);
+
+		$proximoId = 1;
+		$resStatus = $this->db->query("SHOW TABLE STATUS LIKE 'privados_salas_mesas_disponibilidade'");
+		if (!empty($resStatus) && !empty($resStatus[0]['Auto_increment'])) {
+			$proximoId = intval($resStatus[0]['Auto_increment']);
+		}
+
+		$tentativa = 0;
+		do {
+			$incremental = str_pad((string) ($proximoId + $tentativa), 6, '0', STR_PAD_LEFT);
+			$mbwayOrderId = $dataCodigo . '-' . $salaCodigo . '-' . $mesaCodigo . '-' . $incremental;
+			$tentativa++;
+		} while ($this->mbwayOrderIdExiste($mbwayOrderId) && $tentativa < 50);
+
+		if ($this->mbwayOrderIdExiste($mbwayOrderId)) {
+			$mbwayOrderId .= '-' . strtoupper(substr(md5(uniqid('', true)), 0, 4));
+		}
+
+		return $mbwayOrderId;
+	}
+
     function devolveOcupacaoMesa($id_mesa, $data_evento)
     {
         $query = "SELECT * FROM privados_salas_mesas_ocupacao WHERE id_mesa = $id_mesa AND data_evento = '" . $data_evento . "'  ORDER BY id ASC";
@@ -238,7 +290,7 @@ class privados {
 		AND ((IFNULL(reserva_com_valor_antecipado, 0) = 1) OR (IFNULL(valor_caucao_reserva, 0) > 0))
 		AND mbway_data_pedido IS NOT NULL
 		AND mbway_response_status_code != '000'
-		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 4 END) MINUTE) <= NOW()";
+		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 5 END) MINUTE) <= NOW()";
 		$reservas = $this->db->query($query);
 		if (empty($reservas)) {
 			return 0;
@@ -267,7 +319,7 @@ class privados {
 		AND ((IFNULL(reserva_com_valor_antecipado, 0) = 1) OR (IFNULL(valor_caucao_reserva, 0) > 0))
 		AND mbway_data_pedido IS NOT NULL
 		AND mbway_response_status_code != '000'
-		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 4 END) MINUTE) <= NOW()
+		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 5 END) MINUTE) <= NOW()
 		LIMIT 1";
 
 		$reserva = $this->db->query($query);

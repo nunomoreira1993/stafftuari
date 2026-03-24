@@ -62,7 +62,7 @@ if ($descricao === '' || $statusCode === '' || $valor === '') {
 }
 
 $descricaoEsc = addslashes($descricao);
-$query = "SELECT * FROM privados_salas_mesas_disponibilidade WHERE mbway_order_id = '" . $descricaoEsc . "' AND saiu = 0 ORDER BY id DESC LIMIT 1";
+$query = "SELECT * FROM privados_salas_mesas_disponibilidade WHERE mbway_order_id = '" . $descricaoEsc . "' ORDER BY id DESC LIMIT 1";
 $reservaArr = $db->query($query);
 
 if (empty($reservaArr)) {

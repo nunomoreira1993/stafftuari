@@ -36,7 +36,7 @@ $devolveTempoLimiteMbwayMinutos = function ($reserva) {
         return 15;
     }
 
-    return 4;
+    return 5;
 };
 
 $calculaEstadoReservaMesa = function ($reserva, $vendida, $disponivel) use ($devolveTempoLimiteMbwayMinutos) {
@@ -356,6 +356,20 @@ if ($_GET['auto_libertar_expirada'] == 1 && $_GET['id_reserva']) {
                                     <?php echo ($reserva['sms_enviada']) ? "Sim" : "Não"; ?>
                                 </span>
                             </div>
+                            <?php
+                                            if (!empty($reserva['mbway_order_id'])) {
+                                            ?>
+                            <div class="bloco">
+                                <span class="titulo">
+                                    Código Pagamento MBWAY
+                                </span>
+                                <span class="valor">
+                                    <?php echo $reserva['mbway_order_id']; ?>
+                                </span>
+                            </div>
+                            <?php
+                                            }
+                                            ?>
                             <?php
                                             if ($estadoMesa['classe'] === 'aguardar_pagamento' && !empty($reserva['mbway_data_pedido'])) {
                                                 $tempoLimiteMbwayMinutosReserva = $devolveTempoLimiteMbwayMinutos($reserva);

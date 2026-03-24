@@ -145,7 +145,7 @@ if ($_POST) {
                     )
                 );
 
-                $mbwayOrderId = 'RES' . date('YmdHis') . random_int(100, 999);
+                $mbwayOrderId = $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['nome'], $mesa['codigo_mesa']);
                 $mbwayResponse = $lusopayClient->sendMbWayRequest(
                     $mbwayOrderId,
                     $valor_caucao_reserva,
@@ -170,7 +170,7 @@ if ($_POST) {
 
                 if ($erroTimeoutMbway) {
                     $mbway_timeout = 1;
-                    $campos['mbway_order_id'] = isset($mbwayOrderId) ? $mbwayOrderId : ('RES' . date('YmdHis') . random_int(100, 999));
+                    $campos['mbway_order_id'] = isset($mbwayOrderId) ? $mbwayOrderId : $dbprivados->geraCodigoPagamentoMbway($data_evento, $sala['nome'], $mesa['codigo_mesa']);
                     $campos['mbway_status_code'] = 'TIMEOUT';
                     $campos['mbway_status_mensagem'] = 'Pedido MB Way sem resposta imediata (timeout). A aguardar pagamento até 15 minutos.';
                     $campos['mbway_data_pedido'] = date('Y-m-d H:i:s');
