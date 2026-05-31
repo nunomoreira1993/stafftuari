@@ -196,18 +196,18 @@ body {
     overflow: hidden !important;
     -ms-overflow-style: none;
 
-    > ul {
+    >ul {
       margin: 0px;
       padding: 0px;
       outline: none;
       padding: 15px 0 0 0px;
 
-      > li {
+      >li {
         margin-bottom: 8px;
         margin-top: 8px;
         list-style: none;
 
-        > a {
+        >a {
           position: relative;
           cursor: pointer;
           display: inline-block;
@@ -236,7 +236,7 @@ body {
           font-size: 14px;
           font-weight: 400;
 
-          > .icone {
+          >.icone {
             width: 25px;
             font-size: 16px;
             display: inline-block;
@@ -244,8 +244,7 @@ body {
             color: #787f91;
           }
 
-          > .nome {
-          }
+          >.nome {}
 
           &:after {
             position: absolute;
@@ -277,7 +276,7 @@ body {
 
         &.active,
         &:hover {
-          > a {
+          >a {
             font-weight: 500;
             color: $background-color-staff;
             border-left: 3px solid $background-color-staff;
@@ -404,8 +403,7 @@ body {
     padding-left: 15px;
     padding-right: 15px;
 
-    .nome {
-    }
+    .nome {}
 
     .input-quantidade {
       padding: 10px 10px;
@@ -542,7 +540,7 @@ body {
     padding: 0px 25px;
     margin-top: 30px;
 
-    > .exportar-excell {
+    >.exportar-excell {
       background-size: 16px;
       background-position: 10px center;
       background-repeat: no-repeat;
@@ -559,7 +557,7 @@ body {
       display: inline-block;
     }
 
-    > .pesquisa {
+    >.pesquisa {
       width: 100%;
       max-width: 600px;
       display: flex;
@@ -1222,6 +1220,7 @@ body {
           }
 
           &.valor-totalcamarote {
+
             .valor,
             .simbolo {
               font-weight: 800;
@@ -1269,8 +1268,8 @@ body {
               visibility: hidden;
             }
 
-            input[type="checkbox"]:checked + label,
-            input[type="radio"]:checked + label {
+            input[type="checkbox"]:checked+label,
+            input[type="radio"]:checked+label {
               display: block;
               border: 1px solid #c0d863;
               background: #e9ecef;
@@ -1325,8 +1324,7 @@ body {
             -ms-flex: 0 0 100%;
             flex: 0 0 100%;
             max-width: 100%;
-            background: url("/temas/administrador/imagens/custom-select.png")
-              right 0.75rem center no-repeat;
+            background: url("/temas/administrador/imagens/custom-select.png") right 0.75rem center no-repeat;
             display: inline-block;
             width: 100%;
             height: calc(2.0625rem + 2px);
@@ -1418,6 +1416,7 @@ body {
 }
 
 .content {
+
   .letras,
   .letras_pagamentos,
   .letras_presencas {
@@ -1540,6 +1539,7 @@ body {
           padding-top: 3px;
         }
       }
+
       .foto {
         margin-top: auto;
         display: block;
@@ -1565,7 +1565,7 @@ body {
         text-align: center;
       }
 
-      .foto + .nome {
+      .foto+.nome {
         margin-top: 15px;
       }
 
@@ -1795,7 +1795,7 @@ body {
       text-align: center;
     }
 
-    .foto + .nome {
+    .foto+.nome {
       margin-left: 20px;
     }
   }
@@ -1830,8 +1830,7 @@ body {
       }
     }
 
-    .numero {
-    }
+    .numero {}
 
     .apagar {
       font-size: 60px;
@@ -1967,10 +1966,12 @@ body {
                 &.ocupado {
                   background: #c20000;
                 }
+
                 &.aguardar_adiantamento {
                   background: #000000;
                 }
               }
+
               #mesa_1_1 {
                 width: 6.3%;
                 height: 6.5%;
@@ -2000,7 +2001,7 @@ body {
                 width: 6.3%;
                 height: 6.5%;
                 top: 71%;
-                left: 31.4%;
+                left: 26.4%;
                 border-radius: 100%;
               }
 
@@ -2008,14 +2009,15 @@ body {
                 width: 6.3%;
                 height: 6.5%;
                 top: 71.5%;
-                left: 44.6%;
+                left: 36.6%;
                 border-radius: 100%;
               }
+
               #mesa_1_6 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 67.5%;
-                left: 82.6%;
+                left: 67.8%;
                 border-radius: 100%;
               }
 
@@ -2023,8 +2025,7 @@ body {
                 width: 6.3%;
                 height: 6.5%;
                 top: 59.1%;
-                left: 48.7%;
-
+                left: 40.7%;
                 border-radius: 100%;
               }
 
@@ -2032,14 +2033,15 @@ body {
                 width: 6.3%;
                 height: 6.5%;
                 top: 58.9%;
-                left: 65%;
+                left: 54%;
                 border-radius: 100%;
               }
+
               #mesa_1_16 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 58.9%;
-                left: 86%;
+                left: 71%;
                 border-radius: 100%;
               }
 
@@ -2047,7 +2049,7 @@ body {
                 width: 6.3%;
                 height: 6.5%;
                 top: 46.9%;
-                left: 52%;
+                left: 43%;
                 border-radius: 100%;
               }
 
@@ -2055,116 +2057,147 @@ body {
                 width: 6.3%;
                 height: 6.5%;
                 top: 11.8%;
-                left: 29.2%;
+                left: 24.2%;
                 border-radius: 100%;
               }
+
               #mesa_1_31 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 1.8%;
-                left: 24.2%;
+                left: 20.2%;
                 border-radius: 100%;
               }
+
               #mesa_1_32 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 11.8%;
-                left: 39.2%;
+                left: 32.2%;
                 border-radius: 100%;
               }
+
               #mesa_1_33 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 1.8%;
-                left: 33.2%;
+                left: 28.2%;
                 border-radius: 100%;
               }
+
               #mesa_1_34 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 10%;
-                left: 50%;
+                left: 41%;
                 border-radius: 100%;
               }
+
               #mesa_1_35 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 1.8%;
-                left: 43.2%;
+                left: 35.2%;
                 border-radius: 100%;
               }
+
               #mesa_1_36 {
                 width: 6.3%;
                 height: 6.5%;
                 top: 2%;
-                left: 54.5%;
+                left: 45.5%;
                 border-radius: 100%;
               }
+
               #mesa_1_C1 {
                 width: 13.4%;
                 height: 17%;
                 top: 78.7%;
                 left: 34%;
               }
+
               #mesa_1_C2 {
                 width: 13.4%;
                 height: 17%;
                 top: 78.7%;
                 left: 47.9%;
               }
+
               #mesa_1_B10 {
                 width: 18.4%;
                 height: 15.2%;
                 top: 75.2%;
                 left: 64%;
               }
+
               #mesa_1_A1 {
                 width: 13.6%;
                 height: 11.8%;
                 top: 2.7%;
-                left: 64.1%;
+                left: 56.1%;
               }
+
               #mesa_1_A2 {
                 width: 13.6%;
                 height: 11.8%;
                 top: 2.7%;
-                left: 79.6%;
+                left: 70.6%;
               }
+
               #mesa_1_A3 {
                 width: 13.6%;
                 height: 11.8%;
-                top: 16.7%;
-                left: 64.1%;
+                top: 2.7%;
+                left: 85.1%;
               }
+
               #mesa_1_A4 {
-                left: 79.6%;
+                left: 56.1%;
                 width: 13.6%;
                 height: 11.8%;
                 top: 16.7%;
               }
+
+              #mesa_1_A5 {
+                width: 13.6%;
+                height: 11.8%;
+                top: 16.7%;
+                left: 70.6%;
+              }
+
+              #mesa_1_A6 {
+                width: 13.6%;
+                height: 11.8%;
+                top: 16.7%;
+                left: 85.1%;
+              }
+
               #mesa_1_B2 {
-                width: 17.9%;
+                width: 15.3%;
                 height: 9.7%;
                 top: 19%;
-                left: 25.6%;
+                left: 20.6%;
               }
+
               #mesa_1_B4 {
-                width: 17.9%;
+                width: 14.9%;
                 height: 9.7%;
                 top: 19%;
-                left: 44.9%;
+                left: 36.9%;
               }
+
               #mesa_1_B1 {
-                width: 17.9%;
+                width: 15.3%;
                 height: 9.7%;
                 top: 29.8%;
-                left: 25.6%;
+                left: 20.6%;
               }
+
               #mesa_1_B3 {
-                width: 17.9%;
+                width: 14.9%;
                 height: 9.7%;
                 top: 29.8%;
-                left: 44.9%;
+                left: 36.9%;
               }
 
               #mesa_3_41 {
@@ -2174,6 +2207,7 @@ body {
                 left: 5.4%;
                 border-radius: 100%;
               }
+
               #mesa_3_40 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2181,6 +2215,7 @@ body {
                 left: 15.6%;
                 border-radius: 100%;
               }
+
               #mesa_3_43 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2188,6 +2223,7 @@ body {
                 left: 25.4%;
                 border-radius: 100%;
               }
+
               #mesa_3_42 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2195,6 +2231,7 @@ body {
                 left: 35.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_45 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2202,6 +2239,7 @@ body {
                 left: 43.4%;
                 border-radius: 100%;
               }
+
               #mesa_3_44 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2209,6 +2247,7 @@ body {
                 left: 57.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_46 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2216,6 +2255,7 @@ body {
                 left: 75.4%;
                 border-radius: 100%;
               }
+
               #mesa_3_47 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2223,6 +2263,7 @@ body {
                 left: 83.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_56 {
                 width: 12.3%;
                 height: 6.5%;
@@ -2230,6 +2271,7 @@ body {
                 left: 54.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_57 {
                 width: 12.3%;
                 height: 6.5%;
@@ -2237,36 +2279,42 @@ body {
                 left: 84.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_B5 {
                 width: 36.3%;
                 height: 9.9%;
                 top: 29.9%;
                 left: 5%;
               }
+
               #mesa_3_B6 {
                 width: 36.3%;
                 height: 9.9%;
                 top: 18.9%;
                 left: 5%;
               }
+
               #mesa_3_B7 {
                 width: 36.3%;
                 height: 9.9%;
                 top: 29.9%;
                 left: 44.6%;
               }
+
               #mesa_3_B8 {
                 width: 36.3%;
                 height: 9.9%;
                 top: 18.9%;
                 left: 44.6%;
               }
+
               #mesa_3_C4 {
                 width: 31.9%;
                 height: 14.9%;
                 top: 75.4%;
                 left: 54.6%;
               }
+
               #mesa_3_C3 {
                 width: 31.9%;
                 height: 14.9%;
@@ -2281,6 +2329,7 @@ body {
                 left: 0.9%;
                 border-radius: 100%;
               }
+
               #mesa_3_8 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2288,6 +2337,7 @@ body {
                 left: 22.9%;
                 border-radius: 100%;
               }
+
               #mesa_3_9 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2295,6 +2345,7 @@ body {
                 left: 44.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_10 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2302,6 +2353,7 @@ body {
                 left: 65.4%;
                 border-radius: 100%;
               }
+
               #mesa_3_16 {
                 width: 12.3%;
                 height: 6.5%;
@@ -2309,6 +2361,7 @@ body {
                 left: 17.4%;
                 border-radius: 100%;
               }
+
               #mesa_3_17 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2316,6 +2369,7 @@ body {
                 left: 13.6%;
                 border-radius: 100%;
               }
+
               #mesa_3_18 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2323,6 +2377,7 @@ body {
                 left: 41.6%;
                 border-radius: 100%;
               }
+
               #mesa_3_19 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2330,6 +2385,7 @@ body {
                 left: 69.3%;
                 border-radius: 100%;
               }
+
               #mesa_3_21 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2337,6 +2393,7 @@ body {
                 left: 4.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_22 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2344,6 +2401,7 @@ body {
                 left: 32%;
                 border-radius: 100%;
               }
+
               #mesa_3_23 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2351,6 +2409,7 @@ body {
                 left: 59.2%;
                 border-radius: 100%;
               }
+
               #mesa_3_24 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2358,6 +2417,7 @@ body {
                 left: 81.2%;
                 border-radius: 100%;
               }
+
               #mesa_3_25 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2365,6 +2425,7 @@ body {
                 left: 81.2%;
                 border-radius: 100%;
               }
+
               #mesa_3_26 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2372,6 +2433,7 @@ body {
                 left: 32.5%;
                 border-radius: 100%;
               }
+
               #mesa_3_27 {
                 width: 15.5%;
                 height: 6.6%;
@@ -2542,6 +2604,7 @@ body {
                 left: 53%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_4 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2565,6 +2628,7 @@ body {
                 left: 53%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_7 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2588,6 +2652,7 @@ body {
                 left: 53%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_10 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2603,6 +2668,7 @@ body {
                 left: 42%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_12 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2610,6 +2676,7 @@ body {
                 left: 54%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_13 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2617,6 +2684,7 @@ body {
                 left: 82%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_14 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2624,6 +2692,7 @@ body {
                 left: 54%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_15 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2639,6 +2708,7 @@ body {
                 left: 54%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_17 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2654,6 +2724,7 @@ body {
                 left: 54%;
                 border-radius: 100%;
               }
+
               #mesa_6_1_19 {
                 width: 8.3%;
                 height: 4.5%;
@@ -2661,6 +2732,7 @@ body {
                 left: 82%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_1 {
                 width: 8%;
                 height: 4.2%;
@@ -2668,6 +2740,7 @@ body {
                 left: 11%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_2 {
                 width: 8%;
                 height: 4.2%;
@@ -2675,6 +2748,7 @@ body {
                 left: 11%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_3 {
                 width: 8%;
                 height: 4.2%;
@@ -2682,6 +2756,7 @@ body {
                 left: 11%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_4 {
                 width: 8%;
                 height: 4%;
@@ -2689,6 +2764,7 @@ body {
                 left: 11%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_5 {
                 width: 8%;
                 height: 4.2%;
@@ -2696,6 +2772,7 @@ body {
                 left: 22%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_6 {
                 width: 8%;
                 height: 4.2%;
@@ -2703,6 +2780,7 @@ body {
                 left: 30.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_7 {
                 width: 8%;
                 height: 4.2%;
@@ -2710,6 +2788,7 @@ body {
                 left: 38.8%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_8 {
                 width: 8%;
                 height: 4.2%;
@@ -2717,6 +2796,7 @@ body {
                 left: 47.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_9 {
                 width: 8%;
                 height: 4.2%;
@@ -2724,6 +2804,7 @@ body {
                 left: 55.8%;
                 border-radius: 100%;
               }
+
               #mesa_6_2_10 {
                 width: 8%;
                 height: 4.2%;
@@ -2731,6 +2812,7 @@ body {
                 left: 64.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_3_1 {
                 width: 8%;
                 height: 4.2%;
@@ -2738,6 +2820,7 @@ body {
                 left: 81.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_3_2 {
                 width: 8%;
                 height: 4.2%;
@@ -2745,6 +2828,7 @@ body {
                 left: 81.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_3_3 {
                 width: 8%;
                 height: 4.2%;
@@ -2752,6 +2836,7 @@ body {
                 left: 81.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_3_4 {
                 width: 8%;
                 height: 4.2%;
@@ -2759,6 +2844,7 @@ body {
                 left: 81.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_3_5 {
                 width: 8%;
                 height: 4.2%;
@@ -2766,6 +2852,7 @@ body {
                 left: 81.4%;
                 border-radius: 100%;
               }
+
               #mesa_6_3_6 {
                 width: 8%;
                 height: 4.2%;
@@ -2780,324 +2867,378 @@ body {
                 top: 55.6%;
                 left: 18.4%;
               }
+
               #mesa_7_C2 {
                 width: 22.3%;
                 height: 10.3%;
                 top: 55.6%;
                 left: 69.4%;
               }
+
               #mesa_7_1 {
                 width: 7.1%;
                 height: 6%;
                 top: 16.7%;
                 left: 30.9%;
               }
+
               #mesa_7_2 {
                 width: 7.1%;
                 height: 6%;
                 top: 16.7%;
                 left: 40.2%;
               }
+
               #mesa_7_3 {
                 width: 7.1%;
                 height: 6%;
                 top: 16.7%;
                 left: 49.6%;
               }
+
               #mesa_7_4 {
                 width: 7.1%;
                 height: 6%;
                 top: 16.7%;
                 left: 58.8%;
               }
+
               #mesa_7_5 {
                 width: 7.1%;
                 height: 6%;
                 top: 16.7%;
                 left: 68.3%;
               }
+
               #mesa_7_6 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 39.3%;
               }
+
               #mesa_7_7 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 30.3%;
               }
+
               #mesa_7_8 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 21.3%;
               }
+
               #mesa_7_9 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 12.3%;
               }
+
               #mesa_7_10 {
                 width: 7.1%;
                 height: 6%;
                 top: 81.1%;
                 left: 34.4%;
               }
+
               #mesa_7_11 {
                 width: 7.1%;
                 height: 6%;
                 top: 81.1%;
                 left: 25.4%;
               }
+
               #mesa_7_12 {
                 width: 7.1%;
                 height: 6%;
                 top: 81.1%;
                 left: 16.4%;
               }
+
               #mesa_7_13 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 63.3%;
               }
+
               #mesa_7_14 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 72.3%;
               }
+
               #mesa_7_15 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 81.3%;
               }
+
               #mesa_7_16 {
                 width: 7.1%;
                 height: 6%;
                 top: 88.4%;
                 left: 89.6%;
               }
+
               #mesa_7_17 {
                 width: 7.1%;
                 height: 6%;
                 top: 81.1%;
                 left: 67.4%;
               }
+
               #mesa_7_18 {
                 width: 7.1%;
                 height: 6%;
                 top: 81.1%;
                 left: 76.4%;
               }
+
               #mesa_7_19 {
                 width: 7.1%;
                 height: 6%;
                 top: 81.1%;
                 left: 85.4%;
               }
+
               #mesa_8_1 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 14%;
                 left: 37.1%;
               }
+
               #mesa_8_2 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 14%;
                 left: 47.8%;
               }
+
               #mesa_8_3 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 14%;
                 left: 58.6%;
               }
+
               #mesa_8_11 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 14%;
                 left: 15.1%;
               }
+
               #mesa_8_12 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 14%;
                 left: 26.1%;
               }
+
               #mesa_8_13 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 14%;
                 left: 70.1%;
               }
+
               #mesa_8_14 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 14%;
                 left: 80.1%;
               }
+
               #mesa_8_4 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 5%;
                 left: 15.1%;
               }
+
               #mesa_8_5 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 5%;
                 left: 26.1%;
               }
+
               #mesa_8_6 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 5%;
                 left: 37.1%;
               }
+
               #mesa_8_7 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 5%;
                 left: 48%;
               }
+
               #mesa_8_8 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 5%;
                 left: 58.6%;
               }
+
               #mesa_8_9 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 5%;
                 left: 70.1%;
               }
+
               #mesa_8_10 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 5%;
                 left: 80.1%;
               }
+
               #mesa_8_C1 {
                 width: 17.7%;
                 height: 16.8%;
                 top: 30%;
                 left: 10.5%;
               }
+
               #mesa_8_C2 {
                 width: 17.7%;
                 height: 16.8%;
                 top: 48.3%;
                 left: 10.5%;
               }
+
               #mesa_8_C3 {
                 width: 17.7%;
                 height: 16.8%;
                 top: 30%;
                 left: 71.8%;
               }
+
               #mesa_8_C4 {
                 width: 17.7%;
                 height: 16.8%;
                 top: 48.3%;
                 left: 71.8%;
               }
+
               #mesa_8_15 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 4.1%;
               }
+
               #mesa_8_16 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 15.1%;
               }
+
               #mesa_8_17 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 26.1%;
               }
+
               #mesa_8_18 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 37.1%;
               }
+
               #mesa_8_19 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 75%;
                 left: 4.1%;
               }
+
               #mesa_8_20 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 75%;
                 left: 15.1%;
               }
+
               #mesa_8_21 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 75%;
                 left: 26.1%;
               }
+
               #mesa_8_22 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 75%;
                 left: 37.1%;
               }
+
               #mesa_8_23 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 59.1%;
               }
+
               #mesa_8_24 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 70.1%;
               }
+
               #mesa_8_25 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 80.1%;
               }
+
               #mesa_8_26 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 86%;
                 left: 91.1%;
               }
+
               #mesa_8_27 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 75%;
                 left: 59.1%;
               }
+
               #mesa_8_28 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 75%;
                 left: 70.1%;
               }
+
               #mesa_8_29 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 75%;
                 left: 80.1%;
               }
+
               #mesa_8_30 {
                 width: 4.4%;
                 height: 7.2%;
@@ -3111,12 +3252,14 @@ body {
                 top: 64%;
                 left: 37.1%;
               }
+
               #mesa_8_32 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 64%;
                 left: 48.1%;
               }
+
               #mesa_8_33 {
                 width: 4.4%;
                 height: 7.2%;
@@ -3130,12 +3273,14 @@ body {
                 top: 53%;
                 left: 37.1%;
               }
+
               #mesa_8_35 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 53%;
                 left: 48.1%;
               }
+
               #mesa_8_36 {
                 width: 4.4%;
                 height: 7.2%;
@@ -3149,12 +3294,14 @@ body {
                 top: 43%;
                 left: 37.1%;
               }
+
               #mesa_8_38 {
                 width: 4.4%;
                 height: 7.2%;
                 top: 43%;
                 left: 48.1%;
               }
+
               #mesa_8_39 {
                 width: 4.4%;
                 height: 7.2%;
@@ -3230,6 +3377,7 @@ body {
                   &.ocupado {
                     background: #c20000;
                   }
+
                   &.aguardar_adiantamento {
                     background: #000000;
                   }
@@ -3355,7 +3503,7 @@ body {
         text-align: center;
       }
 
-      .foto + .nome {
+      .foto+.nome {
         margin-top: 15px;
       }
 
@@ -3501,7 +3649,7 @@ body {
           color: #ffffff;
         }
 
-        .foto + .nome {
+        .foto+.nome {
           margin-left: 20px;
         }
       }
@@ -3539,8 +3687,7 @@ body {
           }
         }
 
-        .numero {
-        }
+        .numero {}
 
         .apagar {
           font-size: 60px;
@@ -3599,8 +3746,7 @@ body {
       }
     }
 
-    .numero {
-    }
+    .numero {}
 
     .apagar {
       font-size: 60px;
@@ -3922,11 +4068,9 @@ body {
         justify-content: space-between;
         padding-bottom: 10px;
 
-        .nome {
-        }
+        .nome {}
 
-        .valor {
-        }
+        .valor {}
       }
 
       .descricao {
@@ -4196,7 +4340,6 @@ body {
       margin-left: 10px;
     }
 
-    &.ultimo {
-    }
+    &.ultimo {}
   }
 }

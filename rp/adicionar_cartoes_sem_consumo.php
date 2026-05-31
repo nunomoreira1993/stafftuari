@@ -46,6 +46,9 @@ if($_POST){
 				if($total > $max_convidados && $cargo != 1){
 					$_SESSION['erro'] = "Não é permitido convidar mais de " . $max_convidados . " clientes por evento.";
 				}
+				if($total > 8 && $cargo == 1){
+					$_SESSION['erro'] = "Não é permitido convidar mais de 8 clientes por evento.";
+				}
 			}
 		}
 
