@@ -40,8 +40,19 @@ if (empty($mesa)) {
     $sala = $dbprivados->devolveSala($mesa['id_sala']);
 }
 
-if (empty($permite_transferencia_bancaria) || empty($reserva['reserva_com_valor_antecipado'])) {
+if (empty($permite_transferencia_bancaria)) {
     $_SESSION['erro'] = "Não tem permissão para registar pagamentos por transferência bancária nesta reserva.";
+    header('Location: /rp/index.php?pg=disponibilidade_de_mesas&data_evento=' . $_GET['data_evento'] . '#sala_' . $mesa['id_sala']);
+    exit;
+}
+
+$total_pagamento_adiantado = floatval($reserva['valor_multibanco_adiantado'] ?? 0)
+    + floatval($reserva['valor_dinheiro_adiantado'] ?? 0)
+    + floatval($reserva['valor_mbway_adiantado'] ?? 0)
+    + floatval($reserva['valor_transferencia_bancaria_adiantado'] ?? 0);
+
+if (!empty($reserva['reserva_com_valor_antecipado']) || $total_pagamento_adiantado > 0) {
+    $_SESSION['erro'] = "A reserva já tem um pagamento adiantado associado.";
     header('Location: /rp/index.php?pg=disponibilidade_de_mesas&data_evento=' . $_GET['data_evento'] . '#sala_' . $mesa['id_sala']);
     exit;
 }

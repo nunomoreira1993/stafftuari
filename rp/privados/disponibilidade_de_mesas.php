@@ -462,7 +462,15 @@ if ($_GET['auto_libertar_expirada'] == 1 && $_GET['id_reserva']) {
                                 Cancelar reserva
                             </a>
                             <?php
-                            if ($permite_transferencia_bancaria && !empty($reserva['reserva_com_valor_antecipado'])) {
+                            $total_pagamento_adiantado = floatval($reserva['valor_multibanco_adiantado'] ?? 0)
+                                + floatval($reserva['valor_dinheiro_adiantado'] ?? 0)
+                                + floatval($reserva['valor_mbway_adiantado'] ?? 0)
+                                + floatval($reserva['valor_transferencia_bancaria_adiantado'] ?? 0);
+                            if (
+                                $permite_transferencia_bancaria
+                                && empty($reserva['reserva_com_valor_antecipado'])
+                                && $total_pagamento_adiantado <= 0
+                            ) {
                             ?>
                             <a href="/rp/index.php?pg=pagamento_adiantado&id_mesa=<?php echo $mesa['id']; ?>&id=<?php echo $reserva['id']; ?>&data_evento=<?php echo $data_evento; ?>"
                                 class="pagamento">
