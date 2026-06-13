@@ -35,7 +35,7 @@ if ($_POST) {
     $campos['comissao_guest'] = intval($_POST['comissao_guest']);
     $campos['disponibilidade_mesas'] = intval($_POST['disponibilidade_mesas']);
     $campos['permite_reservar_privados'] = intval($_POST['permite_reservar_privados']);
-    $campos['permite_transferencia_bancaria'] = !empty($_POST['permite_transferencia_bancaria']) ? 1 : 0;
+    $campos['permite_transferencia_bancaria'] = intval($_POST['permite_transferencia_bancaria']);
     $campos['bebidas_cartao'] = intval($_POST['bebidas_cartao']);
     $campos['convidados'] = intval($_POST['convidados']);
 
@@ -318,9 +318,10 @@ if ($campos) {
                 Permite pagamento por Transferência Bancária nas reservas
             </label>
             <div class="input">
-                <input type="checkbox" name="permite_transferencia_bancaria"
-                    id="input-permite-transferencia-bancaria" value="1"
-                    <?php if (!empty($rp['permite_transferencia_bancaria'])) { ?> checked="checked" <?php } ?> />
+                <select name="permite_transferencia_bancaria" id="input-permite-transferencia-bancaria">
+                    <option <?php if ($rp['permite_transferencia_bancaria'] == 0) { ?> selected="selected" <?php } ?> value="0"> Não </option>
+                    <option <?php if ($rp['permite_transferencia_bancaria'] == 1) { ?> selected="selected" <?php } ?> value="1"> Sim </option>
+                </select>
             </div>
         </div>
         <div class="input-grupo">
