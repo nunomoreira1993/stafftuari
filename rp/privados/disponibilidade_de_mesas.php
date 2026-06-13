@@ -49,6 +49,12 @@ $calculaEstadoReservaMesa = function ($reserva, $vendida, $disponivel) use ($dev
     }
     
     $reservaComAntecipado = !empty($reserva['reserva_com_valor_antecipado']) || (float) ($reserva['valor_caucao_reserva'] ?? 0) > 0;
+    $metodoPagamentoCaucao = (string) ($reserva['metodo_pagamento_caucao'] ?? 'mbway');
+
+    if ($reservaComAntecipado && $metodoPagamentoCaucao === 'transferencia_bancaria') {
+        return array('classe' => 'transferencia_bancaria', 'label' => 'Transferência Bancária');
+    }
+
     if ($reservaComAntecipado  && $reserva["mbway_response_status_code"] != "000") {
         if (!empty($reserva['mbway_data_pedido'])) {
             $tempoLimiteMbwayMinutos = $devolveTempoLimiteMbwayMinutos($reserva);
@@ -144,6 +150,16 @@ if ($_GET['auto_libertar_expirada'] == 1 && $_GET['id_reserva']) {
 
 .hotspot a.mesa.aguardar_pagamento {
     background-color: #007BFF;
+    color: #fff;
+}
+
+.mesa .estado.transferencia_bancaria {
+    background-color: #9A6700;
+    color: #fff;
+}
+
+.hotspot a.mesa.transferencia_bancaria {
+    background-color: #9A6700;
     color: #fff;
 }
 

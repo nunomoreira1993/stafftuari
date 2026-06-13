@@ -8,6 +8,7 @@ $dbprivados = new privados($db);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/multibanco-e-ou-payshop-by-lusopay/class-lusopay-api-client.php');
 
 $permissao = $dbrp->permissao();
+$permite_transferencia_bancaria = $dbrp->permiteTransferenciaBancaria();
 
 $rps = $dbrp->listaRps();
 $mesa = $dbprivados->devolveMesa($_GET['id_mesa']);
@@ -42,6 +43,7 @@ $campos = array();
 
 $reserva_com_valor_antecipado = 'sim';
 $valor_caucao_reserva = '';
+$metodo_pagamento_caucao = 'mbway';
 $mbway_numero = '351';
 
 if ($_POST) {
@@ -59,6 +61,11 @@ if ($_POST) {
     $valor = $_POST['valor'];
     $reserva_com_valor_antecipado = isset($_POST['reserva_com_valor_antecipado']) && $_POST['reserva_com_valor_antecipado'] === 'nao' ? 'nao' : 'sim';
     $valor_caucao_reserva = isset($_POST['valor_caucao_reserva']) ? (float) str_replace(',', '.', $_POST['valor_caucao_reserva']) : 0;
+    $metodo_pagamento_caucao = $permite_transferencia_bancaria
+        && isset($_POST['metodo_pagamento_caucao'])
+        && $_POST['metodo_pagamento_caucao'] === 'transferencia_bancaria'
+        ? 'transferencia_bancaria'
+        : 'mbway';
     $mbway_numero = isset($_POST['mbway_numero']) ? preg_replace('/\D+/', '', $_POST['mbway_numero']) : '';
 
     if (strpos($mbway_numero, '351') === 0 && strlen($mbway_numero) === 12) {
@@ -90,7 +97,7 @@ if ($_POST) {
             $_SESSION['erro'] = "Por favor introduza um Valor Caução de Reserva superior a 0.";
         }
 
-        if (!preg_match('/^9[1236]\d{7}$/', $mbway_numero)) {
+        if ($metodo_pagamento_caucao === 'mbway' && !preg_match('/^9[1236]\d{7}$/', $mbway_numero)) {
             $_SESSION['erro'] = "Por favor introduza um Nº MB Way português válido.";
         }
     }
@@ -126,18 +133,21 @@ if ($_POST) {
         $campos['valor'] = $valor;
         $campos['reserva_com_valor_antecipado'] = $reserva_com_valor_antecipado === 'sim' ? 1 : 0;
         $campos['valor_caucao_reserva'] = $reserva_com_valor_antecipado === 'sim' ? number_format($valor_caucao_reserva, 2, '.', '') : null;
-        $campos['mbway_numero'] = $reserva_com_valor_antecipado === 'sim' ? $mbway_numero : null;
+        $campos['metodo_pagamento_caucao'] = $reserva_com_valor_antecipado === 'sim' ? $metodo_pagamento_caucao : 'mbway';
+        $campos['mbway_numero'] = $reserva_com_valor_antecipado === 'sim' && $metodo_pagamento_caucao === 'mbway' ? $mbway_numero : null;
         $campos['mensagem'] = $mensagem;
         $campos['telemovel'] = $telemovel;
 
-        if ($reserva_com_valor_antecipado === 'sim' && $idReservaDisponibilidade <= 0) {
+        $pagamento_caucao_mbway = $reserva_com_valor_antecipado === 'sim' && $metodo_pagamento_caucao === 'mbway';
+
+        if ($pagamento_caucao_mbway && $idReservaDisponibilidade <= 0) {
             $idReservaDisponibilidade = intval($db->Insert('privados_salas_mesas_disponibilidade', $campos));
             if ($idReservaDisponibilidade <= 0) {
                 $_SESSION['erro'] = "Não foi possível criar a reserva para enviar o pedido MB Way.";
             }
         }
 
-        if ($reserva_com_valor_antecipado === 'sim' && empty($_SESSION['erro'])) {
+        if ($pagamento_caucao_mbway && empty($_SESSION['erro'])) {
             try {
                 $lusopayClientGuid = isset($cfg_lusopay['client_guid']) ? $cfg_lusopay['client_guid'] : 'BA3FB8CE-1F40-4F4C-AF84-3F55C2D7C1CB';
                 $lusopayVatNumber = isset($cfg_lusopay['vat_number']) ? $cfg_lusopay['vat_number'] : '514791535';
@@ -187,7 +197,7 @@ if ($_POST) {
         }
 
         if (!empty($_SESSION['erro'])) {
-            if ($reserva_com_valor_antecipado === 'sim' && empty($_GET['id']) && $idReservaDisponibilidade > 0) {
+            if ($pagamento_caucao_mbway && empty($_GET['id']) && $idReservaDisponibilidade > 0) {
                 $db->query('DELETE FROM privados_salas_mesas_disponibilidade WHERE id = ' . intval($idReservaDisponibilidade));
                 $idReservaDisponibilidade = 0;
             }
@@ -208,7 +218,7 @@ if ($_POST) {
                 $_SESSION['sucesso'] = "A reserva foi alterada.";
             }
 
-        } else if ($reserva_com_valor_antecipado === 'sim' && $idReservaDisponibilidade > 0) {
+        } else if ($pagamento_caucao_mbway && $idReservaDisponibilidade > 0) {
             $db->Update('privados_salas_mesas_disponibilidade', $campos, 'id=' . $idReservaDisponibilidade);
 
             if ($campos['sms_erro'] == 1) {
@@ -346,12 +356,55 @@ if ($_POST) {
 
             <div class="inputs">
                 <div class="label">
-                    Nº MB Way
+                    <?php
+                    if ($permite_transferencia_bancaria) {
+                    ?>
+                        Método de pagamento
+                    <?php
+                    } else {
+                    ?>
+                        Nº MB Way
+                    <?php
+                    }
+                    ?>
                 </div>
                 <div class="input">
-                    <input name="mbway_numero" id="mbway_numero" value="<?php echo $mbway_numero; ?>" type="tel" />
+                    <?php
+                    if ($permite_transferencia_bancaria) {
+                    ?>
+                        <select name="metodo_pagamento_caucao" id="metodo_pagamento_caucao">
+                            <option value="mbway" <?php if ($metodo_pagamento_caucao === 'mbway') { ?> selected="selected" <?php } ?>>
+                                MB Way
+                            </option>
+                            <option value="transferencia_bancaria"
+                                <?php if ($metodo_pagamento_caucao === 'transferencia_bancaria') { ?> selected="selected" <?php } ?>>
+                                Transferência Bancária
+                            </option>
+                        </select>
+                    <?php
+                    } else {
+                    ?>
+                        <input name="mbway_numero" id="mbway_numero" value="<?php echo $mbway_numero; ?>" type="tel" />
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
+
+            <?php
+            if ($permite_transferencia_bancaria) {
+            ?>
+                <div class="inputs" id="campo-mbway">
+                    <div class="label">
+                        Nº MB Way
+                    </div>
+                    <div class="input">
+                        <input name="mbway_numero" id="mbway_numero" value="<?php echo $mbway_numero; ?>" type="tel" />
+                    </div>
+                </div>
+            <?php
+            }
+            ?>
         </div>
         <!--
         <div class="inputs">
@@ -375,10 +428,13 @@ if ($_POST) {
     var selectAntecipado = document.getElementById('reserva_com_valor_antecipado');
     var blocoAntecipado = document.getElementById('campos-antecipado');
     var valorCaucaoInput = document.getElementById('valor_caucao_reserva');
+    var metodoPagamentoSelect = document.getElementById('metodo_pagamento_caucao');
+    var campoMbway = document.getElementById('campo-mbway');
     var mbwayInput = document.getElementById('mbway_numero');
 
     function toggleCamposAntecipado() {
         var comAntecipado = selectAntecipado && selectAntecipado.value === 'sim';
+        var pagamentoMbway = !metodoPagamentoSelect || metodoPagamentoSelect.value === 'mbway';
 
         if (blocoAntecipado) {
             blocoAntecipado.style.display = comAntecipado ? '' : 'none';
@@ -391,8 +447,12 @@ if ($_POST) {
             }
         }
 
+        if (campoMbway) {
+            campoMbway.style.display = comAntecipado && pagamentoMbway ? '' : 'none';
+        }
+
         if (mbwayInput) {
-            mbwayInput.required = comAntecipado;
+            mbwayInput.required = comAntecipado && pagamentoMbway;
             if (!comAntecipado) {
                 mbwayInput.value = '';
             }
@@ -401,7 +461,12 @@ if ($_POST) {
 
     if (selectAntecipado) {
         selectAntecipado.addEventListener('change', toggleCamposAntecipado);
-        toggleCamposAntecipado();
     }
+
+    if (metodoPagamentoSelect) {
+        metodoPagamentoSelect.addEventListener('change', toggleCamposAntecipado);
+    }
+
+    toggleCamposAntecipado();
 })();
 </script>

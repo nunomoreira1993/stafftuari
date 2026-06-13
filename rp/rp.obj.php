@@ -59,6 +59,12 @@ class rp {
 			return 1;
 		}
 	}
+	function permiteTransferenciaBancaria() {
+		$query = "SELECT permite_transferencia_bancaria FROM rps WHERE id = '" . $this->rp . "'";
+		$res = $this->db->query($query);
+
+		return !empty($res[0]['permite_transferencia_bancaria']);
+	}
 
 	function devolveCargo() {
 
