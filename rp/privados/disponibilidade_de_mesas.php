@@ -154,12 +154,12 @@ if ($_GET['auto_libertar_expirada'] == 1 && $_GET['id_reserva']) {
 }
 
 .mesa .estado.transferencia_bancaria {
-    background-color: #9A6700;
+    background-color: #FFB000;
     color: #fff;
 }
 
 .hotspot a.mesa.transferencia_bancaria {
-    background-color: #9A6700;
+    background-color: #FFB000;
     color: #fff;
 }
 
