@@ -5,6 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/rp/rp.obj.php');
 $dbrp = new rp($db, $_SESSION['id_rp']);
 $id_cargo = $dbrp->devolveCargo();
 $permissao = $dbrp->permissao();
+$permite_transferencia_bancaria = $dbrp->permiteTransferenciaBancaria();
 
 $nome_cliente = $_GET['nome_cliente'];
 
@@ -49,9 +50,7 @@ $calculaEstadoReservaMesa = function ($reserva, $vendida, $disponivel) use ($dev
     }
     
     $reservaComAntecipado = !empty($reserva['reserva_com_valor_antecipado']) || (float) ($reserva['valor_caucao_reserva'] ?? 0) > 0;
-    $metodoPagamentoCaucao = (string) ($reserva['metodo_pagamento_caucao'] ?? 'mbway');
-
-    if ($reservaComAntecipado && $metodoPagamentoCaucao === 'transferencia_bancaria') {
+    if ((float) ($reserva['valor_transferencia_bancaria_adiantado'] ?? 0) > 0) {
         return array('classe' => 'transferencia_bancaria', 'label' => 'Transferência Bancária');
     }
 
@@ -68,7 +67,7 @@ $calculaEstadoReservaMesa = function ($reserva, $vendida, $disponivel) use ($dev
     }
 
     if (empty($disponivel)) {
-         if (($reserva['valor_dinheiro_adiantado'] + $reserva['valor_multibanco_adiantado'] + $reserva['valor_mbway_adiantado']) == 0 && $reserva["mbway_response_status_code"] != "000") {
+         if (($reserva['valor_dinheiro_adiantado'] + $reserva['valor_multibanco_adiantado'] + $reserva['valor_mbway_adiantado'] + $reserva['valor_transferencia_bancaria_adiantado']) == 0 && $reserva["mbway_response_status_code"] != "000") {
             return array('classe' => 'aguardar_adiantamento', 'label' => 'Ocupado (s/ adiantamento)');
          }
          else {
@@ -444,15 +443,26 @@ if ($_GET['auto_libertar_expirada'] == 1 && $_GET['id_reserva']) {
                             </div>
                             <?php
                             }
+                            if ($reserva['valor_transferencia_bancaria_adiantado']) {
+                            ?>
+                            <div class="bloco">
+                                <span class="titulo">
+                                    Adiantado Transferência Bancária (€)
+                                </span>
+                                <span class="valor">
+                                    <?php echo euro($reserva['valor_transferencia_bancaria_adiantado']); ?>
+                                </span>
+                            </div>
+                            <?php
+                            }
                             ?>
                             <a href="/rp/index.php?pg=disponibilidade_de_mesas&data_evento=<?php echo $data_evento; ?>&cancelar=1&id_mesa=<?php echo $reserva['id_mesa']; ?>"
                                 class="cancelar aviso-popup"
                                 data-texto="Deseja cancelar a reserva para a mesa <?php echo $sala['nome']; ?> - <?php echo $mesa['codigo_mesa']; ?> no dia <?php echo $data_evento; ?> ">
                                 Cancelar reserva
                             </a>
-                            <?php 
-                            /*
-                            if ($reserva['valor_mbway_adiantado'] == 0) {
+                            <?php
+                            if ($permite_transferencia_bancaria && !empty($reserva['reserva_com_valor_antecipado'])) {
                             ?>
                             <a href="/rp/index.php?pg=pagamento_adiantado&id_mesa=<?php echo $mesa['id']; ?>&id=<?php echo $reserva['id']; ?>&data_evento=<?php echo $data_evento; ?>"
                                 class="pagamento">
@@ -460,7 +470,6 @@ if ($_GET['auto_libertar_expirada'] == 1 && $_GET['id_reserva']) {
                             </a>
                             <?php
                             }
-                            */
                             if (!empty($reserva)) {
                             ?>
                             <a href="/rp/index.php?pg=disponibilidade_de_mesas&data_evento=<?php echo $data_evento; ?>&libertar=1&id_mesa=<?php echo $reserva['id_mesa']; ?>"

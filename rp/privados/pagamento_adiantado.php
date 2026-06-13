@@ -6,6 +6,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/rp/privados/privados.obj.php');
 $dbprivados = new privados($db);
 
 $permissao = $dbrp->permissao();
+$permite_transferencia_bancaria = $dbrp->permiteTransferenciaBancaria();
 
 $rps = $dbrp->listaRps();
 
@@ -21,6 +22,7 @@ if (empty($reserva)) {
     $valor_multibanco_adiantado = $reserva['valor_multibanco_adiantado'];
     $valor_dinheiro_adiantado = $reserva['valor_dinheiro_adiantado'];
     $valor_mbway_adiantado = $reserva['valor_mbway_adiantado'];
+    $valor_transferencia_bancaria_adiantado = $reserva['valor_transferencia_bancaria_adiantado'];
 }
 
 $mesa = $dbprivados->devolveMesa($_GET['id_mesa']);
@@ -38,6 +40,12 @@ if (empty($mesa)) {
     $sala = $dbprivados->devolveSala($mesa['id_sala']);
 }
 
+if (empty($permite_transferencia_bancaria) || empty($reserva['reserva_com_valor_antecipado'])) {
+    $_SESSION['erro'] = "Não tem permissão para registar pagamentos por transferência bancária nesta reserva.";
+    header('Location: /rp/index.php?pg=disponibilidade_de_mesas&data_evento=' . $_GET['data_evento'] . '#sala_' . $mesa['id_sala']);
+    exit;
+}
+
 if ($_GET['id_mesa']) {
 
     $cartao = $dbprivados->verificaMesaDisponivel(intval($_GET['id_mesa']), $_GET['data_evento']);
@@ -53,11 +61,18 @@ if ($_POST) {
     $valor_multibanco_adiantado = $_POST['valor_multibanco_adiantado'];
     $valor_dinheiro_adiantado = $_POST['valor_dinheiro_adiantado'];
     $valor_mbway_adiantado = $_POST['valor_mbway_adiantado'];
+    $valor_transferencia_bancaria_adiantado = max(0, (float) str_replace(',', '.', $_POST['valor_transferencia_bancaria_adiantado']));
+
+    if ($valor_transferencia_bancaria_adiantado > 0 && (float) $reserva['valor_mbway_adiantado'] > 0) {
+        $_SESSION['erro'] = "Não é possível alterar para transferência bancária porque o pagamento MB Way já foi confirmado.";
+    }
 
     if (empty($_SESSION['erro'])) {
         $campos['valor_multibanco_adiantado'] = $valor_multibanco_adiantado;
         $campos['valor_dinheiro_adiantado'] = $valor_dinheiro_adiantado;
         $campos['valor_mbway_adiantado'] = $valor_mbway_adiantado;
+        $campos['valor_transferencia_bancaria_adiantado'] = number_format($valor_transferencia_bancaria_adiantado, 2, '.', '');
+        $campos['metodo_pagamento_caucao'] = $valor_transferencia_bancaria_adiantado > 0 ? 'transferencia_bancaria' : 'mbway';
 
         if ($_GET['id']) {
             $db->Update('privados_salas_mesas_disponibilidade', $campos, 'id=' . intval($_GET['id']));
@@ -136,6 +151,16 @@ if ($_POST) {
             </div>
             <div class="input">
                 <input name="valor_mbway_adiantado" value="<?php echo $valor_mbway_adiantado; ?>" type="number" step="0.01" />
+            </div>
+        </div>
+
+        <div class="inputs">
+            <div class="label">
+                Valor Transferência Bancária (€)
+            </div>
+            <div class="input">
+                <input name="valor_transferencia_bancaria_adiantado"
+                    value="<?php echo $valor_transferencia_bancaria_adiantado; ?>" type="number" step="0.01" min="0" />
             </div>
         </div>
 

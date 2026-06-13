@@ -26,6 +26,7 @@ $vendas = $dbprivados->listaVendaPrivados(true, $data_evento);
                     <th>Adi. Multibanco</th>
                     <th>Adi. Dinheiro</th>
                     <th>Adi. MBWay</th>
+                    <th>Adi. Transferência</th>
                     <th>Valor Multibanco </th>
                     <th>Valor Dinheiro</th>
                     <th>Valor MBWay</th>
@@ -57,6 +58,7 @@ $vendas = $dbprivados->listaVendaPrivados(true, $data_evento);
                         <td><?php echo euro($venda['valor_multibanco_adiantado']); ?></td>
                         <td><?php echo euro($venda['valor_dinheiro_adiantado']); ?></td>
                         <td><?php echo euro($venda['valor_mbway_adiantado']); ?></td>
+                        <td><?php echo euro($venda['valor_transferencia_bancaria_adiantado']); ?></td>
                         <td><?php echo euro($venda['valor_multibanco']); ?></td>
                         <td><?php echo euro($venda['valor_dinheiro']); ?></td>
                         <td><?php echo euro($venda['valor_mbway']); ?></td>

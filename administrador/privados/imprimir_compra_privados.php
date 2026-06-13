@@ -135,7 +135,7 @@ $venda = $dbprivados->devolveVendaPrivados($_GET['id']);
                 Valor pago (adiantado)
             </div>
             <div class="valor">
-                <?php echo euro($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado']); ?>
+                <?php echo euro($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado'] + $venda['valor_transferencia_bancaria_adiantado']); ?>
             </div>
         </div>
     <?php

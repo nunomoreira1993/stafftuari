@@ -77,6 +77,16 @@ if (empty($reservaArr)) {
 }
 
 $reserva = $reservaArr[0];
+if ((string) ($reserva['metodo_pagamento_caucao'] ?? 'mbway') === 'transferencia_bancaria') {
+    $escreveLog('INFO', 'Callback MBWay ignorado: reserva convertida para transferência bancária.', array(
+        'id_reserva' => intval($reserva['id']),
+        'descricao' => $descricao,
+        'statuscode' => $statusCode,
+    ));
+    echo 'OK';
+    exit;
+}
+
 $valorNormalizado = number_format((float) str_replace(',', '.', $valor), 2, '.', '');
 $mensagemStatus = 'Status MB Way recebido por callback em ' . date('Y-m-d H:i:s');
 if ($dataCallback !== '') {

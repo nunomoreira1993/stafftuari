@@ -46,6 +46,7 @@ if ($mesa_vendida > 0 && $reservaDataEvento["id"] > 0) {
     $reservaDataEvento['valor_dinheiro_adiantado'] = 0;
     $reservaDataEvento['valor_multibanco_adiantado'] = 0;
     $reservaDataEvento['valor_mbway_adiantado'] = 0;
+    $reservaDataEvento['valor_transferencia_bancaria_adiantado'] = 0;
 }
 
 
@@ -65,8 +66,9 @@ if ($_POST) {
     $campos['valor_dinheiro_adiantado'] = $reservaDataEvento['valor_dinheiro_adiantado'];
     $campos['valor_multibanco_adiantado'] = $reservaDataEvento['valor_multibanco_adiantado'];
     $campos['valor_mbway_adiantado'] = $reservaDataEvento['valor_mbway_adiantado'];
+    $campos['valor_transferencia_bancaria_adiantado'] = $reservaDataEvento['valor_transferencia_bancaria_adiantado'];
     $campos['total_venda'] = $campos['valor_dinheiro'] + $campos['valor_multibanco'] + $campos['valor_mbway'];
-    $campos['total'] = $campos['total_venda'] + $campos['valor_dinheiro_adiantado'] + $campos['valor_multibanco_adiantado'] + $campos['valor_mbway_adiantado'];
+    $campos['total'] = $campos['total_venda'] + $campos['valor_dinheiro_adiantado'] + $campos['valor_multibanco_adiantado'] + $campos['valor_mbway_adiantado'] + $campos['valor_transferencia_bancaria_adiantado'];
     $campos['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
     $campos['ip'] = $_SERVER['REMOTE_ADDR'];
 
@@ -320,6 +322,18 @@ if ($campos) {
             </div>
         <?php
         }
+        if ($venda['valor_transferencia_bancaria_adiantado'] > 0) {
+        ?>
+            <div class="input-grupo">
+                <label>
+                    Valor em Transferência Bancária (ADIANTADO) (€)
+                </label>
+                <div class="input">
+                    <?php echo euro($venda['valor_transferencia_bancaria_adiantado']); ?>
+                </div>
+            </div>
+        <?php
+        }
         ?>
         <div class="input-grupo">
             <label for="input-nome">
@@ -399,14 +413,14 @@ if ($campos) {
             </div>
         </div>
         <?php
-        if (($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado']) > 0) {
+        if (($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado'] + $venda['valor_transferencia_bancaria_adiantado']) > 0) {
         ?>
             <div class="input-grupo input-camarote">
                 <label for="input-nome">
                     Valor total camarote (€)
                 </label>
-                <div class="input valor-totalcamarote" data-adiantado="<?php echo (float) ($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado']); ?>">
-                    <span class="valor"><?php echo (float) $venda['total_venda'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_multibanco_adiantado'] + $venda['valor_mbway_adiantado']; ?></span><span class="simbolo"> € </span>
+                <div class="input valor-totalcamarote" data-adiantado="<?php echo (float) ($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado'] + $venda['valor_transferencia_bancaria_adiantado']); ?>">
+                    <span class="valor"><?php echo (float) $venda['total_venda'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_multibanco_adiantado'] + $venda['valor_mbway_adiantado'] + $venda['valor_transferencia_bancaria_adiantado']; ?></span><span class="simbolo"> € </span>
                     <small>(Valor calculado na soma do pagamento adiantado com o pagamento da venda no dia do evento.)</small>
                 </div>
             </div>

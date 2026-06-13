@@ -324,6 +324,18 @@ if ($_GET['cancelar']) {
                                                 </div>
                                             <?php
                                             }
+                                            if ($reserva['valor_transferencia_bancaria_adiantado']) {
+                                                ?>
+                                                <div class="bloco">
+                                                    <span class="titulo">
+                                                        Adiantado Transferência Bancária (€)
+                                                    </span>
+                                                    <span class="valor">
+                                                        <?php echo euro($reserva['valor_transferencia_bancaria_adiantado']); ?>
+                                                    </span>
+                                                </div>
+                                            <?php
+                                            }
                                             ?>
                                         </div>
                                     <?php

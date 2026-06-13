@@ -273,6 +273,7 @@ class privados {
 		WHERE saiu = 0
 		$whereData
 		AND ((IFNULL(reserva_com_valor_antecipado, 0) = 1) OR (IFNULL(valor_caucao_reserva, 0) > 0))
+		AND IFNULL(metodo_pagamento_caucao, 'mbway') != 'transferencia_bancaria'
 		AND mbway_data_pedido IS NOT NULL
 		AND mbway_response_status_code != '000'
 		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 5 END) MINUTE) <= NOW()";
@@ -302,6 +303,7 @@ class privados {
 		WHERE id = " . $id_reserva . "
 		AND saiu = 0
 		AND ((IFNULL(reserva_com_valor_antecipado, 0) = 1) OR (IFNULL(valor_caucao_reserva, 0) > 0))
+		AND IFNULL(metodo_pagamento_caucao, 'mbway') != 'transferencia_bancaria'
 		AND mbway_data_pedido IS NOT NULL
 		AND mbway_response_status_code != '000'
 		AND DATE_ADD(mbway_data_pedido, INTERVAL (CASE WHEN mbway_status_code = 'TIMEOUT' THEN 15 ELSE 5 END) MINUTE) <= NOW()

@@ -64,7 +64,7 @@ if ($_GET['apagar'] == 1 && $_GET['id'] > 0) {
                         <td><?php echo $venda['nome_gerente']; ?></td>
                         <td><?php echo $venda['nome_rp']; ?></td>
                         <td><?php echo $venda['nome_processado']; ?></td>
-                        <td><?php echo euro($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado']); ?></td>
+                        <td><?php echo euro($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado'] + $venda['valor_transferencia_bancaria_adiantado']); ?></td>
                         <td><?php echo euro($venda['valor_multibanco']); ?></td>
                         <td><?php echo euro($venda['valor_dinheiro']); ?></td>
                         <td><?php echo euro($venda['valor_mbway']); ?></td>

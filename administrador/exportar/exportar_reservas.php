@@ -18,20 +18,23 @@ $vendas = $dbprivados->devolveReservasMesas($data);
 $total['valor'] = 0;
 $total['valor_multibanco_adiantado'] = 0;
 $total['valor_dinheiro_adiantado'] = 0;
+$total['valor_mbway_adiantado'] = 0;
+$total['valor_transferencia_bancaria_adiantado'] = 0;
 
 $array[] = array("Data do evento: ", $data, "", "", "", "");
-$array[] = array("Mesa", "Staff", "Gerente", "Nome", "Garrafas", "Cartões", "Valor", "Valor Multibanco (adiantado)", "Valor Dinheiro (adiantado)", "Valor MBWAY (adiantado)", "Total (adiantado)");
+$array[] = array("Mesa", "Staff", "Gerente", "Nome", "Garrafas", "Cartões", "Valor", "Valor Multibanco (adiantado)", "Valor Dinheiro (adiantado)", "Valor MBWAY (adiantado)", "Valor Transferência Bancária (adiantado)", "Total (adiantado)");
 
 foreach ($vendas as $venda) {
-    $array[] = array($venda['codigo_mesa'], $venda['rp_staff'], $venda['rp_gerente'], $venda['nome'], $venda['garrafas'], $venda['cartoes'], number_format($venda['valor'], 2, ',', '.'), number_format($venda['valor_multibanco_adiantado'], 2, ',', '.') . " €", number_format($venda['valor_dinheiro_adiantado'], 2, ',', '.') . " €", number_format($venda['valor_mbway_adiantado'], 2, ',', '.') . " €", number_format($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado'], 2, ',', '.') . " €");
+    $array[] = array($venda['codigo_mesa'], $venda['rp_staff'], $venda['rp_gerente'], $venda['nome'], $venda['garrafas'], $venda['cartoes'], number_format($venda['valor'], 2, ',', '.'), number_format($venda['valor_multibanco_adiantado'], 2, ',', '.') . " €", number_format($venda['valor_dinheiro_adiantado'], 2, ',', '.') . " €", number_format($venda['valor_mbway_adiantado'], 2, ',', '.') . " €", number_format($venda['valor_transferencia_bancaria_adiantado'], 2, ',', '.') . " €", number_format($venda['valor_multibanco_adiantado'] + $venda['valor_dinheiro_adiantado'] + $venda['valor_mbway_adiantado'] + $venda['valor_transferencia_bancaria_adiantado'], 2, ',', '.') . " €");
 
     $total['valor'] += $venda['valor'];
     $total['valor_multibanco_adiantado']  += $venda['valor_multibanco_adiantado'];
     $total['valor_dinheiro_adiantado']  += $venda['valor_dinheiro_adiantado'];
     $total['valor_mbway_adiantado']  += $venda['valor_mbway_adiantado'];
+    $total['valor_transferencia_bancaria_adiantado'] += $venda['valor_transferencia_bancaria_adiantado'];
 }
 
-$array[] = array("Total:", "", "", "", number_format($total['valor'], 2, ',', '.'), number_format($total['valor_multibanco_adiantado'], 2, ',', '.') . " €", number_format($total['valor_dinheiro_adiantado'], 2, ',', '.') . " €", number_format($total['valor_mbway_adiantado'], 2, ',', '.') . " €", number_format($total['valor_multibanco_adiantado'] + $total['valor_dinheiro_adiantado'] + $total['valor_mbway_adiantado'], 2, ',', '.') . " €");
+$array[] = array("Total:", "", "", "", number_format($total['valor'], 2, ',', '.'), number_format($total['valor_multibanco_adiantado'], 2, ',', '.') . " €", number_format($total['valor_dinheiro_adiantado'], 2, ',', '.') . " €", number_format($total['valor_mbway_adiantado'], 2, ',', '.') . " €", number_format($total['valor_transferencia_bancaria_adiantado'], 2, ',', '.') . " €", number_format($total['valor_multibanco_adiantado'] + $total['valor_dinheiro_adiantado'] + $total['valor_mbway_adiantado'] + $total['valor_transferencia_bancaria_adiantado'], 2, ',', '.') . " €");
 
 $nome_ficheiro =  "reservas_" . $_GET['data'] . "_privados";
 $workbook = new Spreadsheet_Excel_Writer();
